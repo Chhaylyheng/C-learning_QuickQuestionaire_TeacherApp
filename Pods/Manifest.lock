@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (4.6.0)
+  - UIDropDown (1.1.1)
+  - YNDropDownMenu (3.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - UIDropDown
+  - YNDropDownMenu
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  UIDropDown: 22e6e3e22d419884c8f21d95ea9be36aac905ed4
+  YNDropDownMenu: 967ebe0c633ce8f40e8667574525aa230ba24560
+
+PODFILE CHECKSUM: ce3f6430a263eadc75548a5092ab1bda45aacdb1
+
+COCOAPODS: 1.3.1
