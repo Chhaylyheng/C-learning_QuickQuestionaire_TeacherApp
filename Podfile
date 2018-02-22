@@ -7,6 +7,7 @@ target 'C Learning Teacher' do
   pod 'Alamofire', '~> 4.5'
   pod 'YNDropDownMenu'
   pod 'UIDropDown'
+  pod 'Firebase/Messaging'
 
   # Pods for C Learning Teacher
 

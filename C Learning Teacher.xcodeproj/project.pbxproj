@@ -36,6 +36,15 @@
 		1CCF1847202EEAF2004A2683 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF1846202EEAF2004A2683 /* BarChartViewController.swift */; };
 		1CCF184D202F177A004A2683 /* QuestionwithcmdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF184C202F177A004A2683 /* QuestionwithcmdViewController.swift */; };
 		1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */; };
+		4700284B203ACC43003CF4EB /* CourseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700284A203ACC43003CF4EB /* CourseListViewController.swift */; };
+		4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4700284C203AD157003CF4EB /* SWRevealViewController.m */; };
+		47005ADC2036DA15001C1ACA /* UIComponentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */; };
+		47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47005ADD2037F1BD001C1ACA /* Screen.swift */; };
+		47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B35203B193400099DE9 /* DashboardViewController.swift */; };
+		47068B3D203B2EEF00099DE9 /* UserProfileCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */; };
+		47068B3F203B35C800099DE9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B3E203B35C800099DE9 /* MenuViewController.swift */; };
+		47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47068B40203BD12500099DE9 /* coredata.xcdatamodeld */; };
+		47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B43203C0C1C00099DE9 /* RoundButton.swift */; };
 		4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313220298F0B00EBA628 /* AppDelegate.swift */; };
 		4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313420298F0B00EBA628 /* Questionnaire.swift */; };
 		4717313820298F0B00EBA628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4717313620298F0B00EBA628 /* Main.storyboard */; };
@@ -44,6 +53,7 @@
 		473CC858202AF534006C0312 /* DropDownViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC857202AF533006C0312 /* DropDownViews.swift */; };
 		473CC85C202AF58E006C0312 /* CustomAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */; };
 		473CC861202B1E80006C0312 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */; };
+		474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C438A2036CC3F00B03006 /* LoginViewController.swift */; };
 		47F5A092202B5AD900F19449 /* QCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5A091202B5AD900F19449 /* QCollectionViewCell.swift */; };
 		C56674FB202F3643007B4D87 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56674FA202F3643007B4D87 /* PNBar.swift */; };
 		C56674FF202F41D5007B4D87 /* ChooiceQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56674FE202F41D5007B4D87 /* ChooiceQuestionViewController.swift */; };
@@ -86,6 +96,16 @@
 		1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestioncmdCollectionViewCell.swift; sourceTree = "<group>"; };
 		22E153ECB6991A57F3C4F07E /* Pods-C Learning Teacher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C Learning Teacher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher.debug.xcconfig"; sourceTree = "<group>"; };
 		232CA50BE37BBD967E08EA7E /* Pods_C_Learning_Teacher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_C_Learning_Teacher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4700284A203ACC43003CF4EB /* CourseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewController.swift; sourceTree = "<group>"; };
+		4700284C203AD157003CF4EB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		4700284D203AD157003CF4EB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentHelper.swift; sourceTree = "<group>"; };
+		47005ADD2037F1BD001C1ACA /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		47068B35203B193400099DE9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCoreData.swift; sourceTree = "<group>"; };
+		47068B3E203B35C800099DE9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		47068B41203BD12500099DE9 /* coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata.xcdatamodel; sourceTree = "<group>"; };
+		47068B43203C0C1C00099DE9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = "C Learning Teacher/RoundButton.swift"; sourceTree = SOURCE_ROOT; };
 		4717312F20298F0B00EBA628 /* C Learning Teacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "C Learning Teacher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4717313220298F0B00EBA628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4717313420298F0B00EBA628 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
@@ -96,6 +116,7 @@
 		473CC857202AF533006C0312 /* DropDownViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownViews.swift; sourceTree = "<group>"; };
 		473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertViewController.xib; sourceTree = "<group>"; };
 		473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		474C438A2036CC3F00B03006 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		47F5A091202B5AD900F19449 /* QCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCollectionViewCell.swift; sourceTree = "<group>"; };
 		89BAF659598A329AEF0CCC50 /* Pods-C Learning Teacher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C Learning Teacher.release.xcconfig"; path = "Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher.release.xcconfig"; sourceTree = "<group>"; };
 		C56674FA202F3643007B4D87 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
@@ -165,6 +186,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4700283F203AC923003CF4EB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4700284D203AD157003CF4EB /* SWRevealViewController.h */,
+				4700284C203AD157003CF4EB /* SWRevealViewController.m */,
+				1C06B42D20341BA5005349FB /* DLRadioButton.h */,
+				1C06B42C20341BA4005349FB /* DLRadioButton.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		47005ADA2036D9BB001C1ACA /* HelperClass */ = {
+			isa = PBXGroup;
+			children = (
+				47068B43203C0C1C00099DE9 /* RoundButton.swift */,
+				47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */,
+				47005ADD2037F1BD001C1ACA /* Screen.swift */,
+				47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */,
+			);
+			path = HelperClass;
+			sourceTree = "<group>";
+		};
 		4717312620298F0B00EBA628 = {
 			isa = PBXGroup;
 			children = (
@@ -189,12 +232,12 @@
 				47FE25E2202AB2FB00E02BCE /* View */,
 				47FE25E3202AB30600E02BCE /* Controller */,
 				47FE25E7202AB33600E02BCE /* Resource */,
+				4700283F203AC923003CF4EB /* Library */,
 				4717313220298F0B00EBA628 /* AppDelegate.swift */,
-				1C06B42D20341BA5005349FB /* DLRadioButton.h */,
-				1C06B42C20341BA4005349FB /* DLRadioButton.m */,
 				4717313E20298F0B00EBA628 /* Info.plist */,
 				1C2CA667202DA92E0064070A /* PNGenericChart.swift */,
 				1C06B42B20341BA3005349FB /* C Learning Teacher-Bridging-Header.h */,
+				47068B40203BD12500099DE9 /* coredata.xcdatamodeld */,
 			);
 			path = "C Learning Teacher";
 			sourceTree = "<group>";
@@ -210,7 +253,11 @@
 		473CC854202AF4A1006C0312 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				47005ADA2036D9BB001C1ACA /* HelperClass */,
 				1C06B4142034134D005349FB /* Preview */,
+				474C438A2036CC3F00B03006 /* LoginViewController.swift */,
+				4700284A203ACC43003CF4EB /* CourseListViewController.swift */,
+				47068B3E203B35C800099DE9 /* MenuViewController.swift */,
 				C59B1EB9202CC98F00C00FC4 /* CustomAlertViewController.swift */,
 				C59B1EB5202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift */,
 				4717313420298F0B00EBA628 /* Questionnaire.swift */,
@@ -221,6 +268,7 @@
 				C56674FE202F41D5007B4D87 /* ChooiceQuestionViewController.swift */,
 				1C06B43120348168005349FB /* BarChartFourViewController.swift */,
 				1C06B43320348490005349FB /* BarChartThreeViewController.swift */,
+				47068B35203B193400099DE9 /* DashboardViewController.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -408,14 +456,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/UIDropDown/UIDropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/YNDropDownMenu/YNDropDownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIDropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNDropDownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -435,17 +489,23 @@
 				1C10073620309D4000572106 /* UIHelper.swift in Sources */,
 				1C06B41A20341438005349FB /* PreviewTwoViewController.swift in Sources */,
 				4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */,
+				47068B3F203B35C800099DE9 /* MenuViewController.swift in Sources */,
 				C56674FF202F41D5007B4D87 /* ChooiceQuestionViewController.swift in Sources */,
 				1C06B428203414D2005349FB /* PreviewFiveCMViewController.swift in Sources */,
 				C56674FB202F3643007B4D87 /* PNBar.swift in Sources */,
 				1C06B41C2034144C005349FB /* PreviewTwoCMViewController.swift in Sources */,
+				47005ADC2036DA15001C1ACA /* UIComponentHelper.swift in Sources */,
+				47068B3D203B2EEF00099DE9 /* UserProfileCoreData.swift in Sources */,
 				473CC861202B1E80006C0312 /* QuestionsTableViewCell.swift in Sources */,
 				1C06B430203459F0005349FB /* SweetAlert.swift in Sources */,
+				4700284B203ACC43003CF4EB /* CourseListViewController.swift in Sources */,
+				47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */,
 				4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */,
 				C59B1EB6202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift in Sources */,
 				1C06B42E20341BA5005349FB /* DLRadioButton.m in Sources */,
 				1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */,
 				1C06B42A203414EE005349FB /* PreviewCMonlyViewController.swift in Sources */,
+				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,
 				1C2CA65A202DA1E40064070A /* PNColor.swift in Sources */,
@@ -456,12 +516,16 @@
 				473CC858202AF534006C0312 /* DropDownViews.swift in Sources */,
 				1C06B41E20341460005349FB /* PreviewThreeViewController.swift in Sources */,
 				1C06B4132032EFCD005349FB /* PreviewYesNoCmdViewController.swift in Sources */,
+				47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */,
 				1C2CA666202DA3430064070A /* ChartTableViewCell.swift in Sources */,
+				474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */,
 				1C06B43220348168005349FB /* BarChartFourViewController.swift in Sources */,
 				1CCF184D202F177A004A2683 /* QuestionwithcmdViewController.swift in Sources */,
 				1C06B43420348490005349FB /* BarChartThreeViewController.swift in Sources */,
 				1C06B4112032E9F8005349FB /* PreviewYesNoViewController.swift in Sources */,
 				1C06B42020341474005349FB /* PreviewThreeCMViewController.swift in Sources */,
+				47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */,
+				47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */,
 				1C2CA65E202DA2560064070A /* PNPieChart.swift in Sources */,
 				1C06B424203414B2005349FB /* PreviewFourCMViewController.swift in Sources */,
 				1C06B4182034141D005349FB /* PreviewAgreeDisagreeCMViewController.swift in Sources */,
@@ -607,11 +671,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84LA3MUD3K;
+				DEVELOPMENT_TEAM = CZ4A988YMV;
 				INFOPLIST_FILE = "C Learning Teacher/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kit.C-Learning.ki";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clearning.kit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "C Learning Teacher/C Learning Teacher-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -627,11 +691,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84LA3MUD3K;
+				DEVELOPMENT_TEAM = CZ4A988YMV;
 				INFOPLIST_FILE = "C Learning Teacher/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kit.C-Learning.ki";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clearning.kit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "C Learning Teacher/C Learning Teacher-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -661,6 +725,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		47068B40203BD12500099DE9 /* coredata.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				47068B41203BD12500099DE9 /* coredata.xcdatamodel */,
+			);
+			currentVersion = 47068B41203BD12500099DE9 /* coredata.xcdatamodel */;
+			path = coredata.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4717312720298F0B00EBA628 /* Project object */;
 }

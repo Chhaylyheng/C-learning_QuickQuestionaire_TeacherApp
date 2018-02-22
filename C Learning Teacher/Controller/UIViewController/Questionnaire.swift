@@ -84,7 +84,7 @@ extension Questionnaire {
     }
     
     @IBAction func buttonHandler(_ sender: UIButton) {
-        print(questionType,"asdf")
+        //print(questionType,"asdf")
         let questionTypes = questionType[sender.tag] as! String
         print(questionType[sender.tag] as! String)
         let checkQuestionqbID = "\(questionTypes)"
