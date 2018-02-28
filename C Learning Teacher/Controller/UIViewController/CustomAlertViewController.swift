@@ -45,7 +45,7 @@ class CustomAlertViewController : UIViewController {
 
 extension CustomAlertViewController {
     func createQuestion() {
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/quest/Insert", method: .post, parameters: ["qbMode":ModeIndex[qbMode],], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/quest/Insert", method: .post, parameters: ["qbMode":ModeIndex[qbMode], "ctID": "c398223976" ], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):

@@ -78,6 +78,11 @@ class MenuViewController: UIViewController {
         profileImage.contentVerticalAlignment = .fill
     }
     
+    @IBAction func mycoursePressed(_ sender: Any) {
+        Screen.goToMain(fromController: self, storyBoardId: "courselistID")
+    }
+    
+    
     @IBAction func logoutPressed(_ sender: Any) {
         
         let logoutAlert = UIAlertController(title: "Logout", message: "Are you sure to logout?", preferredStyle: UIAlertControllerStyle.alert)

@@ -41,6 +41,13 @@ class CourseListViewController: UIViewController {
         }
     }
     
+    @IBAction func classPressed(_ sender: Any) {
+        
+        let Dashboard = storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardViewController
+        navigationController?.pushViewController(Dashboard , animated: true)
+    }
+    
+    
     func setUpNavBar(){
         //For title in navigation bar
         self.navigationController?.view.backgroundColor = UIColor.white

@@ -19,4 +19,6 @@ class QCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var preview: UIButton!
     
+    @IBOutlet weak var dropDown: UIButton!
+    
 }

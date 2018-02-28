@@ -11,12 +11,25 @@ import UIKit
 class PreviewFourCMViewController: UIViewController {
 
     @IBOutlet weak var qtitle: UILabel!
+    @IBOutlet weak var btnOne: DLRadioButton!
+    @IBOutlet weak var btnTwo: DLRadioButton!
+    @IBOutlet weak var btnThree: DLRadioButton!
+    @IBOutlet weak var btnFour: DLRadioButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        qtitle.text = qbTitle
-        
+        qtitle.text = "[Q] " + qbTitle
+        btnOne.layer.cornerRadius = 5
+        btnOne.layer.borderWidth = 1
+        btnTwo.layer.cornerRadius = 5
+        btnTwo.layer.borderWidth = 1
+        btnThree.layer.cornerRadius = 5
+        btnThree.layer.borderWidth = 1
+        btnFour.layer.cornerRadius = 5
+        btnFour.layer.borderWidth = 1
         // Do any additional setup after loading the view.
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 
-
 class DetailViewController: UIViewController {
     var chartName: String?
 
@@ -25,7 +24,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        qbTitles.text = qbTitle
+        qbTitles.text = " [Q]  " + qbTitle
         self.title = "Total Result"
         if qbID == "" {
             self.noanwserYet.text = "No answer yet!"
@@ -126,6 +125,9 @@ class DetailViewController: UIViewController {
                         self.noNum = self.numArray[2] as! Int
                         self.yesPer = Int(self.perArray[1] as! Float)
                         self.noPer = Int(self.perArray[2] as! Float)
+//                        print("***")
+//                        print(self.yesNum, " -- yes")
+//                        print(self.noNum, " -- no")
                         if self.yesNum != 0 || self.noNum != 0 {
                             let pieChart = self.setPieChart()
                             self.view.addSubview(pieChart)

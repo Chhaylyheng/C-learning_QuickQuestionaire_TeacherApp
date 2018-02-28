@@ -8,6 +8,8 @@ target 'C Learning Teacher' do
   pod 'YNDropDownMenu'
   pod 'UIDropDown'
   pod 'Firebase/Messaging'
+  pod 'SwiftyJSON'
+  pod 'Alamofire-SwiftyJSON'
 
   # Pods for C Learning Teacher
 

@@ -36,17 +36,30 @@ extension Questionnaire {
         refreshControl.addTarget(self, action: Selector(("refresh:")), for: UIControlEvents.allTouchEvents)
         QuestionCollection.addSubview(refreshControl)
         
+        
     }
     
+}
+
+// APP UI
+extension Questionnaire {
+    func setUpNavBar(){
+        //For title in navigation bar
+        self.navigationController?.view.backgroundColor = UIColor.white
+        self.navigationController?.view.tintColor = UIColor.orange
+        self.navigationItem.title = "Questionnaires"
+        
+        //For back button in navigation bar
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
 }
 
 //APP Collection Cell
 
 extension Questionnaire {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-        return 2
-    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
@@ -62,11 +75,13 @@ extension Questionnaire {
             
             cell.questionBtn.setTitle(questionTitle[indexPath.row] as? String, for: .normal)
             cell.answerNum.setTitle(questionqpNum[indexPath.row] as? String, for: .normal)
+            cell.dropDown.addTarget(self, action: #selector(drowDown), for: .touchUpInside)
+            cell.dropDown.tag = indexPath.row
             cell.questionBtn.tag = indexPath.row
             cell.preview.tag = indexPath.row
             cell.preview.addTarget(self, action: #selector(previewHandler), for: .touchUpInside)
             cell.questionBtn.addTarget(self, action: #selector(buttonHandler), for: .touchUpInside)
-            cell.deleted.addTarget(self, action: #selector(deletedHandler), for: .touchUpInside)
+            //cell.deleted.addTarget(self, action: #selector(deletedHandler), for: .touchUpInside)
             
         }
         return cell
@@ -83,6 +98,60 @@ extension Questionnaire {
         self.present(vc, animated: true)
     }
     
+    @IBAction func drowDown(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: " Editing", preferredStyle: .actionSheet)
+        
+        let editInfor = UIAlertAction(title: "Edit Questionnaires Information", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            
+        })
+        
+        let editQuest = UIAlertAction(title: "Edit Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            
+        })
+        let copyQuest = UIAlertAction(title: "Copy of the Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            
+        })
+        let downloadQuest = UIAlertAction(title: "Download Answer CSV", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            
+        })
+        let resetSubmission = UIAlertAction(title: "Reset Submission Status", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            
+        })
+        let deleteQuest = UIAlertAction(title: "Delete Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            let questionqbID = self.questionQb[sender.tag] as! String
+            let checkQuestionqbID = "\(questionqbID)"
+            //print(checkQuestionqbID)
+            self.deteleQuestionAPI(qb: checkQuestionqbID)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(editInfor)
+        alertController.addAction(editQuest)
+        alertController.addAction(copyQuest)
+        alertController.addAction(downloadQuest)
+        alertController.addAction(resetSubmission)
+        alertController.addAction(deleteQuest)
+        alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    // Question Title Handler
     @IBAction func buttonHandler(_ sender: UIButton) {
         //print(questionType,"asdf")
         let questionTypes = questionType[sender.tag] as! String
@@ -133,14 +202,15 @@ extension Questionnaire {
     }
     
     
-    @IBAction func deletedHandler(_ sender: UIButton) {
-        let questionqbID = questionQb[sender.tag] as! String
-        let checkQuestionqbID = "\(questionqbID)"
-        print(checkQuestionqbID)
-        deteleQuestionAPI(qb: checkQuestionqbID)
-        
-    }
+//    @IBAction func deletedHandler(_ sender: UIButton) {
+//        let questionqbID = questionQb[sender.tag] as! String
+//        let checkQuestionqbID = "\(questionqbID)"
+//        print(checkQuestionqbID)
+//        deteleQuestionAPI(qb: checkQuestionqbID)
+//        
+//    }
     
+    // Preview Button Handler
     @IBAction func previewHandler(_ sender: UIButton) {
         let questionTypes = questionType[sender.tag] as! String
         print(questionType[sender.tag] as! String)
