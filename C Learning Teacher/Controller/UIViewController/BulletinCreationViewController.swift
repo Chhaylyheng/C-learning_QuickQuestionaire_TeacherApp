@@ -28,10 +28,12 @@ class BulletinCreationViewController: UIViewController {
     var applicable : String = ""
     let alert = SweetAlert()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
         setUpNavBar()
+        
 
     }
 
@@ -94,10 +96,15 @@ class BulletinCreationViewController: UIViewController {
         self.navigationItem.title = "Bulletin Board Creation"
         
         //For back button in navigation bar
-        let backButton = UIBarButtonItem()
-        backButton.title = "Back"
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+//        let backButton = UIBarButtonItem()
+//        backButton.title = "Cancel"
+//        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func createAction(_ sender: Any) {
         bulletin = bulletinName.text!
@@ -117,6 +124,7 @@ class BulletinCreationViewController: UIViewController {
             self.createBulletin()
         }
     }
+    
     func createBulletin() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateCreate", method: .post, parameters: ["ctID":"c398223976","cc_name":bulletin, "cc_stuwrite":submission, "cc_anonymous": nonymous, "cc_sturange": applicable]).responseJSON {
             response in
@@ -124,8 +132,8 @@ class BulletinCreationViewController: UIViewController {
                 let result = JSON(response.result.value!)
                 if result["mes"] == "success" {
                     
-                    self.alert.showAlert("Done", subTitle: "Create a new Bulletin Board is Done", style: AlertStyle.none ,buttonTitle: "Okay")  {  Void in
-                        self.navigationController?.popViewController(animated: true)
+                    self.alert.showAlert("Done", subTitle: "Create a new Bulletin Board is Done", style: AlertStyle.none ,buttonTitle: "Okay") { Void in
+                        self.dismiss(animated: true, completion: nil)
                         
                     }
                 } else {

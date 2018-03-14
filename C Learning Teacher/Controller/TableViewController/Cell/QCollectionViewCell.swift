@@ -13,7 +13,6 @@ class QCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var questionBtn: UIButton!
     
-    @IBOutlet weak var deleted: UIButton!
     
     @IBOutlet weak var answerNum: UIButton!
     

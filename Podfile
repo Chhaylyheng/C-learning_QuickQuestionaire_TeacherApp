@@ -10,6 +10,8 @@ target 'C Learning Teacher' do
   pod 'Firebase/Messaging'
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'
+  pod 'PopupController'
+  pod 'UICheckbox.Swift'
 
   # Pods for C Learning Teacher
 

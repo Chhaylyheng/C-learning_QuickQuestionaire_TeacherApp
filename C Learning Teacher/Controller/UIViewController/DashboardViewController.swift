@@ -27,7 +27,7 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func BulletinBoardPressed(_ sender: Any) {
-        let BulletinBoard = storyboard?.instantiateViewController(withIdentifier: "BulletinBoard") as! BulletinBoardViewController
+        let BulletinBoard = storyboard?.instantiateViewController(withIdentifier: "BBID") as! BulletinBoardViewController
         navigationController?.pushViewController(BulletinBoard, animated: true)
     }
     
