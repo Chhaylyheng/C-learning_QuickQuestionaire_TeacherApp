@@ -18,6 +18,8 @@ class ThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentNum: UIButton!
     @IBOutlet weak var viewNum: UIButton!
+    @IBOutlet weak var optionItem: UIButton!
+    
     
     // MARK: - Dynamic Cell Height for Tweet with/without image
     

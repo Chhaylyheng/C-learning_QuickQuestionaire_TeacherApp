@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "99A3839FB5F9F26540D72AC617AB9F5D"
+               BlueprintIdentifier = "B331E9AA423FD2812A233B0B0EA3748F"
                BlueprintName = "YNDropDownMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "YNDropDownMenu.framework">

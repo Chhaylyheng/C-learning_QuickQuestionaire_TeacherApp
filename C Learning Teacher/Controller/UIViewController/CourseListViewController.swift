@@ -19,7 +19,9 @@ class CourseListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setUpNavBar()
+
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,6 +31,11 @@ class CourseListViewController: UIViewController {
     @IBAction func BtnMenu(_ sender: Any) {
         
         Slidemenu()
+    }
+    
+    @IBAction func addCourse(_ sender: Any) {
+        print("This Function isnot working yet")
+        
     }
     
     
@@ -51,9 +58,10 @@ class CourseListViewController: UIViewController {
     func setUpNavBar(){
         //For title in navigation bar
         self.navigationController?.view.backgroundColor = UIColor.white
-        self.navigationController?.view.tintColor = UIColor.orange
+        self.navigationController?.view.tintColor = UIColor.white
         self.navigationItem.title = "My Classes"
         
     }
+    
 
 }

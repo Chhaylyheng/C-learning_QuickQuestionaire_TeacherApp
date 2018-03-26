@@ -10,16 +10,17 @@ import UIKit
 import Alamofire
 
 
-class Questionnaire: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class Questionnaire: UIViewController, UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     
-    
-    @IBOutlet weak var QuestionCollection: UICollectionView!
     var refreshControl: UIRefreshControl!
     var questionTitle : NSArray = []
     var questionType: NSArray  = []
     var questionQb : NSArray = []
     var questionqpNum : NSArray = []
+    
+
 }
 
 //APP CYCLE
@@ -28,14 +29,13 @@ extension Questionnaire {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        QuestionCollection.delegate = self
-        QuestionCollection.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         self.getQuestionAPI()
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: Selector(("refresh:")), for: UIControlEvents.allTouchEvents)
-        QuestionCollection.addSubview(refreshControl)
-        
+        tableView.addSubview(refreshControl)
         
     }
     
@@ -59,31 +59,36 @@ extension Questionnaire {
 //APP Collection Cell
 
 extension Questionnaire {
-
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return questionType.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : QCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "QCell", for: indexPath) as! QCollectionViewCell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QQcell", for: indexPath) as! QQTableViewCell
         
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLabelTap))
+        cell.addGestureRecognizer(gestureRecognizer)
+      
         if questionType == [] {
-            cell.questionBtn.setTitle("No connection", for: .normal)
+            cell.questionTitle.setTitle("No connection", for: .normal)
         } else {
             
-            cell.questionBtn.setTitle(questionTitle[indexPath.row] as? String, for: .normal)
+            cell.questionTitle.setTitle(questionTitle[indexPath.row] as? String, for: .normal)
+            cell.questionTitle.tag = indexPath.row
+            cell.questionTitle.addTarget(self, action: #selector(buttonHandler), for: .touchUpInside)
+            
             cell.answerNum.setTitle(questionqpNum[indexPath.row] as? String, for: .normal)
             cell.dropDown.addTarget(self, action: #selector(drowDown), for: .touchUpInside)
             cell.dropDown.tag = indexPath.row
-            cell.questionBtn.tag = indexPath.row
+
             cell.preview.tag = indexPath.row
             cell.preview.addTarget(self, action: #selector(previewHandler), for: .touchUpInside)
-            cell.questionBtn.addTarget(self, action: #selector(buttonHandler), for: .touchUpInside)
-            //cell.deleted.addTarget(self, action: #selector(deletedHandler), for: .touchUpInside)
             
         }
+        
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -99,30 +104,25 @@ extension Questionnaire {
     }
     
     @IBAction func drowDown(_ sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: " Editing", preferredStyle: .actionSheet)
+        //cell.dropDown.tag = indexPath.row
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let editInfor = UIAlertAction(title: "Edit Questionnaires Information", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             
-            
         })
-        
         let editQuest = UIAlertAction(title: "Edit Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            
             
         })
         let copyQuest = UIAlertAction(title: "Copy of the Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             
-            
         })
         let downloadQuest = UIAlertAction(title: "Download Answer CSV", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            
             
         })
         let resetSubmission = UIAlertAction(title: "Reset Submission Status", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             
-            
         })
-        let deleteQuest = UIAlertAction(title: "Delete Questionnaires", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+        let deleteQuest = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (alert: UIAlertAction!) -> Void in
             
             let questionqbID = self.questionQb[sender.tag] as! String
             let checkQuestionqbID = "\(questionqbID)"
@@ -302,19 +302,20 @@ extension Questionnaire {
         self.getQuestionAPI()
     }
     
+    // MARK: Delete Question
     func deteleQuestionAPI(qb : String) {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/quest/Delete", method: .post, parameters: ["qb":qb,], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    print(response.result.value)
+                    print(response.result.value as Any)
                 }
                 self.getQuestionAPI()
                 break
                 
             case .failure(_):
-                print(response.result.error)
+                print(response.result.error as Any)
                 break
                 
             }
@@ -322,8 +323,22 @@ extension Questionnaire {
         
     }
     
+    @objc func handleLabelTap(sender: UIGestureRecognizer) {
+        
+        let position = sender.location(in: self.tableView)
+        
+        guard let index = self.tableView.indexPathForRow(at: position) else {
+            print("Error label not in tableView")
+            return
+        }
+        
+        print(index.row, "###")
+
+    }
+
     
     
+    // MARK: Get all the Questions
     func getQuestionAPI() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/quest/Question", method: .get, parameters: ["":"",], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
@@ -343,14 +358,19 @@ extension Questionnaire {
                             self.questionType = []
                             self.questionQb = []
                         }
+                        //print(self.questionTitle, "###")
                         
                     }
                 }
-                self.QuestionCollection.reloadData()
+                self.tableView.reloadData()
                 break
                 
             case .failure(_):
-                print(response.result.error)
+                let alertController:UIAlertController = UIAlertController(title:nil, message: "There is no internet connection", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction:UIAlertAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler:{ (action:UIAlertAction!) -> Void in
+                })
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
                 break
                 
             }

@@ -143,7 +143,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
             
             // Call completion handler with true to indicate
             
-            print("This is working")
+            //print("This is working")
             
             let Alert = UIAlertController(title: "Warning", message: "Deleting the Bulletin Board deletes all related information such as articles and files under it. Is it OK?", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -251,7 +251,11 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
                 break
                 
             case .failure(_):
-                self.PresentAlertController(title: "Warning", message: "failure", actionTitle: "Okay")
+                let alertController:UIAlertController = UIAlertController(title:nil, message: "There is no internet connection", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction:UIAlertAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler:{ (action:UIAlertAction!) -> Void in
+                })
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
                 break
                 
             }
@@ -267,7 +271,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
                 if response.result.value != nil{
                     print(response.result.value as Any)
                 }
-                self.getBBAPI()
+                //self.getBBAPI()
                 break
                 
             case .failure(_):

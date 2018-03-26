@@ -153,7 +153,7 @@ extension LoginViewController {
                     let ttImage = teacher["ttImage"] as! String
                     let ttLastLoginDate = teacher["ttLastLoginDate"] as! String
                     let imageUrl : URL = URL(string: "https://kit.c-learning.jp/upload/profile/t/"+ttImage)!
-                    print(imageUrl,"+++")
+                    //print(imageUrl,"+++")
                     
                     self.getDataFromUrl(url: imageUrl){
                         (data, response, error)  in
@@ -163,8 +163,8 @@ extension LoginViewController {
                         }
                         self.image = (data as NSData?)!
                         
-                        print(ttLastLoginDate,"+++")
-                        if let ttName = teacher["ttName"]  {
+                        //print(ttLastLoginDate,"+++")
+                        if let ttName = teacher["ttName"] {
                             Userprofiles.insertUserProfile(_email: email,_username: ttName as! String,_hashkey : haskey, _profileImage: self.image!, _lastlogin: ttLastLoginDate) { (result) -> () in
                                 // do stuff with the result
                                 if result {
@@ -173,12 +173,6 @@ extension LoginViewController {
                             }
                         }
                     }
-                    
-                    
-//                    Userprofiles.insertUserProfile(email, "")
-                    
-                    
-                   
                 
                 }
                 
@@ -186,7 +180,6 @@ extension LoginViewController {
                 
             case .failure(_):
                  UIComponentHelper.PresentActivityIndicator(view: self.view, option: false)
-                
                 self.PresentAlertController(title: "Warning", message: "failure", actionTitle: "Okay")
                 break
                 

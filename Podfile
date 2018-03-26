@@ -12,7 +12,9 @@ target 'C Learning Teacher' do
   pod 'Alamofire-SwiftyJSON'
   pod 'PopupController'
   pod 'UICheckbox.Swift'
-
+  pod 'DropDown'
+  pod "Popover"
+  pod 'FormSheetTextView'
   # Pods for C Learning Teacher
 
 end

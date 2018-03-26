@@ -40,8 +40,7 @@ class MenuViewController: UIViewController {
         do {
             userProfile_ids = try manageObjectContext.fetch(userProfileRequest)
             if userProfile_ids == [] {
-                
-                
+                //
             } else {
                 for i in userProfile_ids {
                     
@@ -68,7 +67,6 @@ class MenuViewController: UIViewController {
     
     func getLoginbyHashKey(hashKey : String) {
         
-        
     }
     func roundProfileimage() {
       
@@ -81,7 +79,6 @@ class MenuViewController: UIViewController {
     @IBAction func mycoursePressed(_ sender: Any) {
         Screen.goToMain(fromController: self, storyBoardId: "courselistID")
     }
-    
     
     @IBAction func logoutPressed(_ sender: Any) {
         

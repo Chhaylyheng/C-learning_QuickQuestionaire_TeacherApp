@@ -136,7 +136,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FormSheetTextView/FormSheetTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Popover/Popover.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
@@ -148,7 +151,10 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FormSheetTextView/FormSheetTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Popover/Popover.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"

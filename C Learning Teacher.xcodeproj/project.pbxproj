@@ -50,6 +50,7 @@
 		470B1154205580AE004CD764 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B1153205580AE004CD764 /* ThreadTableViewCell.swift */; };
 		470EEDF42050FF14002B5DC1 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF32050FF13002B5DC1 /* PopupController.swift */; };
 		470EEDF8205180A8002B5DC1 /* BBCreatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */; };
+		471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47116FFF2060F26900CC5264 /* QQTableViewCell.swift */; };
 		4711C6DC20455CB200826C9E /* BulletinBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */; };
 		4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313220298F0B00EBA628 /* AppDelegate.swift */; };
 		4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313420298F0B00EBA628 /* Questionnaire.swift */; };
@@ -63,7 +64,6 @@
 		474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C438A2036CC3F00B03006 /* LoginViewController.swift */; };
 		4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */; };
 		4754CB85204667970040BC79 /* BulletinCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB84204667970040BC79 /* BulletinCreationViewController.swift */; };
-		47F5A092202B5AD900F19449 /* QCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5A091202B5AD900F19449 /* QCollectionViewCell.swift */; };
 		47FEE1D2205626CC00675DDE /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1D1205626CC00675DDE /* ThreadViewController.swift */; };
 		47FEE1D4205652FA00675DDE /* NetworkProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1D3205652FA00675DDE /* NetworkProcessing.swift */; };
 		47FEE1DE20595D1100675DDE /* ThreadCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */; };
@@ -123,6 +123,7 @@
 		470B1153205580AE004CD764 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		470EEDF32050FF13002B5DC1 /* PopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCreatePopUpViewController.swift; sourceTree = "<group>"; };
+		47116FFF2060F26900CC5264 /* QQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQTableViewCell.swift; sourceTree = "<group>"; };
 		4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardViewController.swift; sourceTree = "<group>"; };
 		4717312F20298F0B00EBA628 /* C Learning Teacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "C Learning Teacher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4717313220298F0B00EBA628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +139,6 @@
 		474C438A2036CC3F00B03006 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinboardCellTableViewCell.swift; sourceTree = "<group>"; };
 		4754CB84204667970040BC79 /* BulletinCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinCreationViewController.swift; sourceTree = "<group>"; };
-		47F5A091202B5AD900F19449 /* QCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCollectionViewCell.swift; sourceTree = "<group>"; };
 		47FEE1D1205626CC00675DDE /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		47FEE1D3205652FA00675DDE /* NetworkProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkProcessing.swift; path = "../../../../../../Downloads/m3mDZKEdSK0nt5TbAuel_Twitter-DucTran/Tweeties-Complete/Tweeties/NetworkProcessing.swift"; sourceTree = "<group>"; };
 		47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCreateViewController.swift; sourceTree = "<group>"; };
@@ -337,7 +337,7 @@
 			children = (
 				473CC857202AF533006C0312 /* DropDownViews.swift */,
 				473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */,
-				47F5A091202B5AD900F19449 /* QCollectionViewCell.swift */,
+				47116FFF2060F26900CC5264 /* QQTableViewCell.swift */,
 				1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */,
 				4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */,
 				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
@@ -510,7 +510,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/FormSheetTextView/FormSheetTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -523,7 +526,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FormSheetTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -547,7 +553,6 @@
 				C5667501202F42A3007B4D87 /* PNBarChart.swift in Sources */,
 				1C2CA664202DA31E0064070A /* DetailViewController.swift in Sources */,
 				4711C6DC20455CB200826C9E /* BulletinBoardViewController.swift in Sources */,
-				47F5A092202B5AD900F19449 /* QCollectionViewCell.swift in Sources */,
 				1C10073620309D4000572106 /* UIHelper.swift in Sources */,
 				1C06B41A20341438005349FB /* PreviewTwoViewController.swift in Sources */,
 				4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */,
@@ -571,6 +576,7 @@
 				1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */,
 				1C06B42A203414EE005349FB /* PreviewCMonlyViewController.swift in Sources */,
 				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
+				471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,
 				4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */,
