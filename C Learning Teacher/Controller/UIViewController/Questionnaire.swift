@@ -31,6 +31,9 @@ extension Questionnaire {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.getQuestionAPI()
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -331,13 +334,10 @@ extension Questionnaire {
             print("Error label not in tableView")
             return
         }
-        
         print(index.row, "###")
 
     }
 
-    
-    
     // MARK: Get all the Questions
     func getQuestionAPI() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/quest/Question", method: .get, parameters: ["":"",], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
@@ -347,7 +347,6 @@ extension Questionnaire {
                 if let dictionary = response.result.value as? [String: Any] {
                     
                     for i in dictionary {
-                        
                         if let test = i.value as? NSArray {
                             self.questionTitle = test.value(forKey: "qbTitle") as! NSArray
                             self.questionType = (test.value(forKey: "qbQuickMode") as! NSArray)

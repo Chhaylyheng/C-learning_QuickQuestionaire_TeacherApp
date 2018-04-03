@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import DropDown
 import Popover
-import FormSheetTextView
 
 class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -36,6 +35,7 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var commentNum : NSArray = []
     var seenNum : NSArray = []
     var cNo : NSArray = []
+    var num = Int()
     
     let rightBarDropDown = DropDown()
     let centeredDropDown = DropDown()
@@ -52,7 +52,6 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     
-    
     @IBAction func showBarButtonDropDown(_ sender: Any) {
         rightBarDropDown.show()
     }
@@ -66,7 +65,6 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -144,11 +142,6 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    @IBAction func createAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "goto", sender: self)
-    }
-    
-
     public func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -168,10 +161,9 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLabelTap))
         cell.addGestureRecognizer(gestureRecognizer)
 
-        cell.optionItem.addTarget(self, action: #selector(optionHandler), for: .touchUpInside)
-       
         cell.optionItem.tag = indexPath.row
-        cell.optionItem.frame = cell.frame
+        cell.optionItem.addTarget(self, action: #selector(optionHandler), for: .touchUpInside)
+        //cell.optionItem.frame = cell.frame
         
         cell.username.text = (username[indexPath.row] as! String)
         cell.postDate.text = (postDate[indexPath.row] as! String)
@@ -179,6 +171,11 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.caption.text = (threadCaption[indexPath.row] as! String)
         //cell.commentNum.setTitle((commentNum[indexPath.row] as! String), for: .normal)
         cell.viewNum.setTitle((seenNum[indexPath.row] as! String), for: .normal)
+        
+        
+        cell.commentNum.tag = indexPath.row
+        cell.commentNum.addTarget(self, action: #selector(commentHandler), for: .touchUpInside)
+        
         /* https://kit.c-learning.jp/getfile/s3file/imageName */
         let picture = pictures[indexPath.row] as! String
         
@@ -213,12 +210,33 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.selectionStyle = .none
-        
         return cell
     }
     
-    @objc func handleLabelTap(sender: UIGestureRecognizer) {
+
+}
+
+private extension UIView
+{
+    func roundedCorners() {
+        self.layer.cornerRadius = 5.0
+        layer.masksToBounds = true
+    }
+}
+
+
+
+// MARK : Button Handler
+
+extension ThreadViewController {
+    
+    @IBAction func createAction(_ sender: Any) {
+        performSegue(withIdentifier: "toCreateThread", sender: self)
         
+    }
+    
+    
+    @objc func handleLabelTap(sender: UIGestureRecognizer) {
         let position = sender.location(in: self.tableView)
         guard let index = self.tableView.indexPathForRow(at: position) else {
             print("Error label not in tableView")
@@ -229,55 +247,34 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    
+    @IBAction func commentHandler(_ sender: UIButton){
+        let Dtail = storyboard?.instantiateViewController(withIdentifier: "commentThread") as! CommentThreadViewController
+        Dtail.userName = self.username[sender.tag] as! String
+        Dtail.postDate = self.postDate[sender.tag] as! String
+        Dtail.threadTitle = self.threadTitle[sender.tag] as! String
+        Dtail.threadBody = self.threadCaption[sender.tag] as! String
+        Dtail.postImageName = self.pictures[sender.tag] as! String
+        //Dtail.commentNum =
+        Dtail.seenNum = self.seenNum[sender.tag] as! String
+        
+        navigationController?.pushViewController(Dtail, animated: true)
+        //popToViewController
+    }
+    
+    
     @IBAction func optionHandler(_ sender: UIButton) {
-        let title = threadTitle[sender.tag] as! String
-        let body = threadCaption[sender.tag] as! String
+//        let title = threadTitle[sender.tag] as! String
+//        let body = threadCaption[sender.tag] as! String
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let editInfor = UIAlertAction(title: "Edit", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            let cn = self.cNo[sender.tag] as! String
-            let formSheetTextViewController = FormSheetTextViewController.instantiate()
-        
-            //formSheetTextViewController.setInitialText((self.baseTextView?.text)!)
-            formSheetTextViewController.setTitleText("Edit")
-            formSheetTextViewController.setCancelButtonText("Cancel")
-            formSheetTextViewController.setIsInitialPositionHead(false)
-            formSheetTextViewController.setInitialText(title)
-            formSheetTextViewController.setBodyText(body)
-            //formSheetTextViewController.allParamater("c398223976", self.bbID, cn)
+            self.num = sender.tag
+            print(self.num, " ? num")
+            self.performSegue(withIdentifier: "toEditThread", sender: self)
             
-            formSheetTextViewController.setSendButtonText("Send")
-            //let (hour, minute, second) = formSheetTextViewController.getData()
-            formSheetTextViewController.completionHandler = { title, body in
-                //print(sendText, abc, "@@")
-                if (title.characters.count == 0) {
-                    let alertController:UIAlertController = UIAlertController(title:nil, message: "Please enter the title", preferredStyle: UIAlertControllerStyle.alert)
-                    let cancelAction:UIAlertAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler:{ (action:UIAlertAction!) -> Void in
-                    })
-                    alertController.addAction(cancelAction)
-                    formSheetTextViewController.present(alertController, animated: true, completion: nil)
-                    return
-                }
-
-                if (body.characters.count == 0) {
-                    let alertController:UIAlertController = UIAlertController(title:nil, message: "Please enter the body", preferredStyle: UIAlertControllerStyle.alert)
-                    let cancelAction:UIAlertAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler:{ (action:UIAlertAction!) -> Void in
-                    })
-                    alertController.addAction(cancelAction)
-                    formSheetTextViewController.present(alertController, animated: true, completion: nil)
-                    return
-                }
-                
-                self.updateThread(title: title, body: body, cn: cn)
-
-                self.dismiss(animated: true, completion: nil)
-            };
-            
-            let navigationController = UINavigationController(rootViewController: formSheetTextViewController)
-            navigationController.modalPresentationStyle = UIModalPresentationStyle.formSheet
-            self.present(navigationController, animated: true, completion: nil)
         })
-        alertController.addAction(editInfor)
+        
         
         let deleteQuest = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (alert: UIAlertAction!) -> Void in
             
@@ -285,24 +282,58 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.deteleAPI(cn: cno)
             
         })
-        alertController.addAction(deleteQuest)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
+       
         if let popoverController = alertController.popoverPresentationController {
             popoverController.sourceView = self.view
             popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
             popoverController.permittedArrowDirections = []
         }
         
-//        alertController.popoverPresentationController?.sourceView = view
-//        alertController.popoverPresentationController?.sourceRect = sender.frame
+        //        alertController.popoverPresentationController?.sourceView = view
+        //        alertController.popoverPresentationController?.sourceRect = sender.frame
         
+        alertController.addAction(editInfor)
+        alertController.addAction(deleteQuest)
+        alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         
     }
     
+}
+
+
+// MARK: Prepare Before Segue
+
+extension ThreadViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navVC = segue.destination as? UINavigationController
+        let identifier = "\(String(describing: segue.identifier ?? "nil") )"
+        
+        if identifier == "toCreateThread" {
+            let nextController = navVC?.viewControllers.first as! ThreadCreateViewController
+            nextController.bbID = self.bbID
+            
+        }
+        
+        if identifier == "toEditThread" {
+            let nextController = navVC?.viewControllers.first as! ThreadUpdateViewController
+            nextController.ctID = courseCode
+            nextController.bbID = bbID
+            nextController.cn = cNo[num] as! String
+            nextController.threadTitle = threadTitle[num] as! String
+            nextController.threadBody = threadCaption[num] as! String
+            
+        }
+    }
+}
+
+
+
+// MARK: API Request
+
+extension ThreadViewController {
     func getThreadAPI() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/thread", method: .post, parameters: ["ccID":bbID], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
@@ -326,7 +357,7 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 
                 print("@@@@@ result @@@@ ")
-//                print(self.username)
+                //                print(self.username)
                 print(self.pictures)
                 
                 self.tableView.reloadData()
@@ -379,24 +410,5 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
         }
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let identifier = "\(String(describing: segue.identifier ?? "nil") )"
-        if identifier == "goto" {
-            let toViewController = segue.destination as! ThreadCreateViewController
-            toViewController.bbID = self.bbID
-            
-        }
-    }
-
-}
-
-private extension UIView
-{
-    func roundedCorners() {
-        self.layer.cornerRadius = 5.0
-        layer.masksToBounds = true
     }
 }

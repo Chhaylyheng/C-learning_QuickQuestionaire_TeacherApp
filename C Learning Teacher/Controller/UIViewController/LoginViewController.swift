@@ -180,7 +180,8 @@ extension LoginViewController {
                 
             case .failure(_):
                  UIComponentHelper.PresentActivityIndicator(view: self.view, option: false)
-                self.PresentAlertController(title: "Warning", message: "failure", actionTitle: "Okay")
+                self.PresentAlertController(title: "Warning", message: "There is no internet connection", actionTitle: "Okay")
+                
                 break
                 
             }

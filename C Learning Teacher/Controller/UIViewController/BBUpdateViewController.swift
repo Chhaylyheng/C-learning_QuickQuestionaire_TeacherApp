@@ -15,9 +15,9 @@ class BBUpdateViewController: UIViewController {
     @IBOutlet weak var bulletinName: UITextField!
     @IBOutlet weak var fair: DLRadioButton!
     @IBOutlet weak var failed: DLRadioButton!
-    @IBOutlet weak var anonymous: DLRadioButton!
-    @IBOutlet weak var instrucRegis: DLRadioButton!
     @IBOutlet weak var register: DLRadioButton!
+    @IBOutlet weak var instrucRegis: DLRadioButton!
+    @IBOutlet weak var anonymous: DLRadioButton!
     @IBOutlet weak var all: DLRadioButton!
     @IBOutlet weak var choice: DLRadioButton!
     @IBOutlet weak var none: DLRadioButton!
@@ -90,7 +90,7 @@ class BBUpdateViewController: UIViewController {
         bulletinName.text = bulletin
         if stuWrite == "1" {
             fair.isSelected = true;
-        } else {
+        } else if stuWrite == "0"{
             failed.isSelected = true;
         }
         
@@ -98,7 +98,7 @@ class BBUpdateViewController: UIViewController {
             anonymous.isSelected = true;
         } else if nonymous == "1" {
             instrucRegis.isSelected = true;
-        } else {
+        } else if nonymous == "2" {
             register.isSelected = true;
         }
         
@@ -106,7 +106,7 @@ class BBUpdateViewController: UIViewController {
             none.isSelected = true;
         } else if stuRange == "1" {
             choice.isSelected = true;
-        } else {
+        } else if stuRange == "2" {
             all.isSelected = true;
         }
     }
@@ -158,12 +158,26 @@ class BBUpdateViewController: UIViewController {
             UIComponentHelper.PresentActivityIndicator(view: self.view, option: false)
             PresentAlertController(title: "Warning", message: "Please Bulletin Board Name", actionTitle: "Okay")
         } else {
+            if radioSubmission.isEmpty {
+                radioSubmission = stuWrite
+            }
+            if radioAnonymous.isEmpty {
+                radioAnonymous = nonymous
+            }
+            if radioApplicable.isEmpty {
+                radioApplicable = stuRange
+            }
+            
             updateBulletin()
         }
     }
     
     func updateBulletin() {
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateedit", method: .post, parameters: ["ccID":ccID,"cc_name":bulletin, "cc_stuwrite":radioSubmission, "radioAnonymous": nonymous, "cc_sturange": radioApplicable]).responseJSON {
+//        print("# radioSubmission: ", radioSubmission)
+//        print("# radioAnonymous: ", radioAnonymous)
+//        print("# radioApplicable: ", radioApplicable)
+        
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateedit", method: .post, parameters: ["ccID":ccID,"cc_name":bulletin, "cc_stuwrite":radioSubmission, "radioAnonymous": radioAnonymous, "cc_sturange": radioApplicable]).responseJSON {
             response in
             if response.result.isSuccess {
                 let result = JSON(response.result.value!)
@@ -176,8 +190,7 @@ class BBUpdateViewController: UIViewController {
                     
                 }
                 
-            }
-            else {
+            } else {
                 print("Error \(String(describing: response.result.error))")
             }
         }

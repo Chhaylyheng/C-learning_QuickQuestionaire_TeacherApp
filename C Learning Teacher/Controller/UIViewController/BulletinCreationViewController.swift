@@ -9,9 +9,10 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftMultiSelect
 
-class BulletinCreationViewController: UIViewController {
-    
+class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,SwiftMultiSelectDataSource {
+   
     @IBOutlet weak var fair: DLRadioButton!
     @IBOutlet weak var failed: DLRadioButton!
     @IBOutlet weak var anonymous: DLRadioButton!
@@ -22,19 +23,49 @@ class BulletinCreationViewController: UIViewController {
     @IBOutlet weak var none: DLRadioButton!
     @IBOutlet weak var bulletinName: UITextField!
     
+    
+    var ctID = String()
+    
+    var studentName : NSArray = []
+    var studentClass : NSArray = []
+    var studentNum : NSArray = []
+    
     var bulletin : String = ""
     var submission : String = ""
     var nonymous : String = ""
     var applicable : String = ""
     let alert = SweetAlert()
     
+    var items:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
+    var initialValues:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
+    var selectedItems:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
         setUpNavBar()
         
-
+        Config.doneString = "OK"
+        SwiftMultiSelect.dataSource     = self
+        SwiftMultiSelect.delegate       = self
+        SwiftMultiSelect.dataSourceType = .custom
+        
+        getAllStudent()
+        
+        
+    }
+    func createItems(){
+        
+        print("\(studentName.count)  ?")
+        
+        self.items.removeAll()
+        self.initialValues.removeAll()
+        for i in 0...(studentName.count - 1){
+            items.append(SwiftMultiSelectItem(row: i, title: "\(studentName[i])", description: "\(studentClass[i]) . \(studentNum[i])"))
+        }
+        
+        //self.initialValues = [self.items.first!,self.items[1],self.items[2]]
+        self.selectedItems = items
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +85,7 @@ class BulletinCreationViewController: UIViewController {
             nonymous = "2"
         } else if (sender as AnyObject).tag == 2 {
             nonymous = "1"
-        } else {
+        } else if (sender as AnyObject).tag == 3 {
             nonymous = "0"
         }
     }
@@ -62,8 +93,11 @@ class BulletinCreationViewController: UIViewController {
         if (sender as AnyObject).tag == 1 {
             applicable = "2"
         } else if (sender as AnyObject).tag == 2 {
-            applicable = "1"
-        } else {
+            
+             SwiftMultiSelect.initialSelected = initialValues
+             SwiftMultiSelect.Show(to: self)
+            
+        } else if (sender as AnyObject).tag == 3 {
             applicable = "0"
         }
     }
@@ -126,7 +160,7 @@ class BulletinCreationViewController: UIViewController {
     }
     
     func createBulletin() {
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateCreate", method: .post, parameters: ["ctID":"c398223976","cc_name":bulletin, "cc_stuwrite":submission, "cc_anonymous": nonymous, "cc_sturange": applicable]).responseJSON {
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateCreate", method: .post, parameters: ["ctID":ctID,"cc_name":bulletin, "cc_stuwrite":submission, "cc_anonymous": nonymous, "cc_sturange": applicable]).responseJSON {
             response in
             if response.result.isSuccess {
                 let result = JSON(response.result.value!)
@@ -137,7 +171,7 @@ class BulletinCreationViewController: UIViewController {
                         
                     }
                 } else {
-                    
+                    print("Request to the create api was not succeed")
                 }
                 
             }
@@ -147,5 +181,85 @@ class BulletinCreationViewController: UIViewController {
         }
     }
     
+    
+    //MARK: - SwiftMultiSelectDelegate
+    func userDidSearch(searchString: String) {
+        if searchString == "" {
+            selectedItems = items
+        }else{
+            selectedItems = items.filter({$0.title.lowercased().contains(searchString.lowercased()) || ($0.description != nil && $0.description!.lowercased().contains(searchString.lowercased())) })
+        }
+    }
+    
+    func numberOfItemsInSwiftMultiSelect() -> Int {
+        
+        return selectedItems.count
+    }
+    
+    func swiftMultiSelect(didUnselectItem item: SwiftMultiSelectItem) {
+        print("row: \(item.title) has been deselected!")
+    }
+    
+    func swiftMultiSelect(didSelectItem item: SwiftMultiSelectItem) {
+        print("item: \(item.title) has been selected!")
+    }
+    
+    func didCloseSwiftMultiSelect() {
+        
+    }
+    
+    func swiftMultiSelect(itemAtRow row: Int) -> SwiftMultiSelectItem {
+        return selectedItems[row]
+    }
+    
+    func swiftMultiSelect(didSelectItems items: [SwiftMultiSelectItem]) {
+        
+        initialValues   = items
+        print("you have been selected: \(items.count) items!")
+        
+        for item in items{
+            print(item.string)
+        }
+        
+    }
+    
 
+}
+
+
+// MARK: API
+
+extension BulletinCreationViewController {
+    //https://kit.c-learning.jp/t/ajax/coop/stuadd
+    
+    // Get all the student name in the class
+    func getAllStudent() {
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/stuadd", method: .post, parameters: ["ctID":"c398223976"], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+            
+            switch(response.result) {
+            case .success(_):
+                let repsoneResult = response.result.value as? NSDictionary
+                let data = repsoneResult!["data"] as! NSArray
+                self.studentName = data.value(forKey: "stName") as! NSArray
+                self.studentClass = data.value(forKey: "stClass") as! NSArray
+                self.studentNum = data.value(forKey: "stNO") as! NSArray
+                
+                print("+++++++++++++++++++++++++++")
+                print(self.studentName as Any)
+                
+                self.createItems()
+                
+                break;
+            case .failure(_):
+                let alertController:UIAlertController = UIAlertController(title:nil, message: "There is no internet connection", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction:UIAlertAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler:{ (action:UIAlertAction!) -> Void in
+                })
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+
+                break;
+            }
+            
+        }
+    }
 }

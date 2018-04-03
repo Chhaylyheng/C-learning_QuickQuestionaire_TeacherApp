@@ -41,12 +41,14 @@
 		47005ADC2036DA15001C1ACA /* UIComponentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */; };
 		47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47005ADD2037F1BD001C1ACA /* Screen.swift */; };
 		470276E4205391B90030BD5E /* BBUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470276E3205391B90030BD5E /* BBUpdateViewController.swift */; };
+		4704084420708E1A00066348 /* ThreadUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704084320708E1A00066348 /* ThreadUpdateViewController.swift */; };
 		470479EB205242C9000D0274 /* BBCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 470479EA205242C9000D0274 /* BBCreate.storyboard */; };
 		47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B35203B193400099DE9 /* DashboardViewController.swift */; };
 		47068B3D203B2EEF00099DE9 /* UserProfileCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */; };
 		47068B3F203B35C800099DE9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B3E203B35C800099DE9 /* MenuViewController.swift */; };
 		47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47068B40203BD12500099DE9 /* coredata.xcdatamodeld */; };
 		47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B43203C0C1C00099DE9 /* RoundButton.swift */; };
+		470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */; };
 		470B1154205580AE004CD764 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B1153205580AE004CD764 /* ThreadTableViewCell.swift */; };
 		470EEDF42050FF14002B5DC1 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF32050FF13002B5DC1 /* PopupController.swift */; };
 		470EEDF8205180A8002B5DC1 /* BBCreatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */; };
@@ -64,8 +66,10 @@
 		474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C438A2036CC3F00B03006 /* LoginViewController.swift */; };
 		4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */; };
 		4754CB85204667970040BC79 /* BulletinCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB84204667970040BC79 /* BulletinCreationViewController.swift */; };
+		47F09609206A897E00B3E1A9 /* CommentThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */; };
+		47F0960B206A8ABA00B3E1A9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */; };
+		47F0960D206A8E1200B3E1A9 /* ThreadHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */; };
 		47FEE1D2205626CC00675DDE /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1D1205626CC00675DDE /* ThreadViewController.swift */; };
-		47FEE1D4205652FA00675DDE /* NetworkProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1D3205652FA00675DDE /* NetworkProcessing.swift */; };
 		47FEE1DE20595D1100675DDE /* ThreadCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */; };
 		C56674FB202F3643007B4D87 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56674FA202F3643007B4D87 /* PNBar.swift */; };
 		C56674FF202F41D5007B4D87 /* ChooiceQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56674FE202F41D5007B4D87 /* ChooiceQuestionViewController.swift */; };
@@ -114,12 +118,14 @@
 		47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentHelper.swift; sourceTree = "<group>"; };
 		47005ADD2037F1BD001C1ACA /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		470276E3205391B90030BD5E /* BBUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBUpdateViewController.swift; sourceTree = "<group>"; };
+		4704084320708E1A00066348 /* ThreadUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadUpdateViewController.swift; sourceTree = "<group>"; };
 		470479EA205242C9000D0274 /* BBCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BBCreate.storyboard; sourceTree = "<group>"; };
 		47068B35203B193400099DE9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCoreData.swift; sourceTree = "<group>"; };
 		47068B3E203B35C800099DE9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		47068B41203BD12500099DE9 /* coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata.xcdatamodel; sourceTree = "<group>"; };
 		47068B43203C0C1C00099DE9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = "C Learning Teacher/RoundButton.swift"; sourceTree = SOURCE_ROOT; };
+		470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessing.swift; sourceTree = "<group>"; };
 		470B1153205580AE004CD764 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		470EEDF32050FF13002B5DC1 /* PopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCreatePopUpViewController.swift; sourceTree = "<group>"; };
@@ -139,8 +145,10 @@
 		474C438A2036CC3F00B03006 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinboardCellTableViewCell.swift; sourceTree = "<group>"; };
 		4754CB84204667970040BC79 /* BulletinCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinCreationViewController.swift; sourceTree = "<group>"; };
+		47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentThreadViewController.swift; sourceTree = "<group>"; };
+		47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeaderView.swift; sourceTree = "<group>"; };
 		47FEE1D1205626CC00675DDE /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
-		47FEE1D3205652FA00675DDE /* NetworkProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkProcessing.swift; path = "../../../../../../Downloads/m3mDZKEdSK0nt5TbAuel_Twitter-DucTran/Tweeties-Complete/Tweeties/NetworkProcessing.swift"; sourceTree = "<group>"; };
 		47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCreateViewController.swift; sourceTree = "<group>"; };
 		89BAF659598A329AEF0CCC50 /* Pods-C Learning Teacher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C Learning Teacher.release.xcconfig"; path = "Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher.release.xcconfig"; sourceTree = "<group>"; };
 		C56674FA202F3643007B4D87 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
@@ -228,7 +236,7 @@
 				47005ADB2036DA15001C1ACA /* UIComponentHelper.swift */,
 				47005ADD2037F1BD001C1ACA /* Screen.swift */,
 				47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */,
-				47FEE1D3205652FA00675DDE /* NetworkProcessing.swift */,
+				470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -309,6 +317,8 @@
 				470276E3205391B90030BD5E /* BBUpdateViewController.swift */,
 				47FEE1D1205626CC00675DDE /* ThreadViewController.swift */,
 				47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */,
+				4704084320708E1A00066348 /* ThreadUpdateViewController.swift */,
+				47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */,
 				C59B1EB5202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift */,
 				1CCF1846202EEAF2004A2683 /* BarChartViewController.swift */,
 				C59B1EB9202CC98F00C00FC4 /* CustomAlertViewController.swift */,
@@ -342,6 +352,8 @@
 				4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */,
 				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
 				470B1153205580AE004CD764 /* ThreadTableViewCell.swift */,
+				47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */,
+				47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -509,13 +521,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
-				"${BUILT_PRODUCTS_DIR}/FormSheetTextView/FormSheetTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMultiSelect/SwiftMultiSelect.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UICheckbox.Swift/UICheckbox_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIDropDown/UIDropDown.framework",
@@ -525,13 +536,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FormSheetTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMultiSelect.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICheckbox_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIDropDown.framework",
@@ -556,6 +566,7 @@
 				1C10073620309D4000572106 /* UIHelper.swift in Sources */,
 				1C06B41A20341438005349FB /* PreviewTwoViewController.swift in Sources */,
 				4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */,
+				47F0960D206A8E1200B3E1A9 /* ThreadHeaderView.swift in Sources */,
 				47068B3F203B35C800099DE9 /* MenuViewController.swift in Sources */,
 				47FEE1D2205626CC00675DDE /* ThreadViewController.swift in Sources */,
 				C56674FF202F41D5007B4D87 /* ChooiceQuestionViewController.swift in Sources */,
@@ -571,6 +582,7 @@
 				47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */,
 				47FEE1DE20595D1100675DDE /* ThreadCreateViewController.swift in Sources */,
 				4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */,
+				47F0960B206A8ABA00B3E1A9 /* CommentTableViewCell.swift in Sources */,
 				C59B1EB6202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift in Sources */,
 				1C06B42E20341BA5005349FB /* DLRadioButton.m in Sources */,
 				1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */,
@@ -578,6 +590,7 @@
 				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
 				471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
+				47F09609206A897E00B3E1A9 /* CommentThreadViewController.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,
 				4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */,
 				1C2CA65A202DA1E40064070A /* PNColor.swift in Sources */,
@@ -589,10 +602,10 @@
 				473CC858202AF534006C0312 /* DropDownViews.swift in Sources */,
 				1C06B41E20341460005349FB /* PreviewThreeViewController.swift in Sources */,
 				1C06B4132032EFCD005349FB /* PreviewYesNoCmdViewController.swift in Sources */,
+				4704084420708E1A00066348 /* ThreadUpdateViewController.swift in Sources */,
 				470276E4205391B90030BD5E /* BBUpdateViewController.swift in Sources */,
 				47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */,
 				1C2CA666202DA3430064070A /* ChartTableViewCell.swift in Sources */,
-				47FEE1D4205652FA00675DDE /* NetworkProcessing.swift in Sources */,
 				474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */,
 				1C06B43220348168005349FB /* BarChartFourViewController.swift in Sources */,
 				1CCF184D202F177A004A2683 /* QuestionwithcmdViewController.swift in Sources */,
@@ -604,6 +617,7 @@
 				47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */,
 				47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */,
 				1C2CA65E202DA2560064070A /* PNPieChart.swift in Sources */,
+				470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */,
 				1C06B424203414B2005349FB /* PreviewFourCMViewController.swift in Sources */,
 				1C06B4182034141D005349FB /* PreviewAgreeDisagreeCMViewController.swift in Sources */,
 				1CCF1847202EEAF2004A2683 /* BarChartViewController.swift in Sources */,

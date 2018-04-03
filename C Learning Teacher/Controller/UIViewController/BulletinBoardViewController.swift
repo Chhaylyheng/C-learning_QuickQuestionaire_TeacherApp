@@ -37,6 +37,8 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         //collectionView.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         setUpNavBar()
         
@@ -150,7 +152,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
             
             Alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
                 
-                self.deleteBBAPI(id: self.ccID[indexPath.row] as! String )
+                self.deleteBBAPI(id: self.ccID[indexPath.row] as! String)
                 completionHandler(true)
                 
             }))
@@ -164,44 +166,10 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         //let editAction = UIContextualAction(style: .normal, title: "Edit")
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, sourceView, completionHandler) in
             
-            print("Working in edit action")
+            //print("Working in edit action")
             self.num = indexPath.row
-            print(self.num," ? num value was set inside the action")
-            
-            
-//            PopupController
-//                .create(self)
-//                .customize(
-//                    [
-//                        .layout(.center),
-//                        .animation(.slideUp),
-//                        .scrollable(true),
-//                        .backgroundStyle(.blackFilter(alpha: 0.7))
-//                    ]
-//                )
-//                .didShowHandler { popup in
-//                    print("showed popup!")
-//                }
-//                .didCloseHandler { _ in
-//                    print("closed popup!")
-//                }
-//                .show(BBCreatePopUpViewController.instance())
-            
-         
-            func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                let toViewController = segue.destination as! BBUpdateViewController
-                //toViewController.ccID = self.ccID[indexPath.row] as! String
-                toViewController.bulletin = self.ccNames[indexPath.row] as! String
-                toViewController.stuWrite = self.ccStudentWrites[indexPath.row] as! String
-                toViewController.nonymous = self.ccAnonymouss[indexPath.row] as! String
-                toViewController.stuRange = self.ccRanges[indexPath.row] as! String
-
-
-            }
-            
             completionHandler(true)
             self.performSegue(withIdentifier: "gotoEdit", sender: self)
-            
             
         }
         
@@ -246,7 +214,6 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
 //                print(self.ccID)
                 
                 
-                //self.collectionView.reloadData()
                 self.tableView.reloadData()
                 break
                 
@@ -283,24 +250,6 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    @IBAction func didTapButton3(_ sender: AnyObject) {
-       
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let identifier = "\(String(describing: segue.identifier ?? "nil") )"
-        if identifier == "gotoEdit" {
-            let toViewController = segue.destination as! BBUpdateViewController
-            toViewController.ccID = self.ccID[num] as! String
-            toViewController.bulletin = self.ccNames[num] as! String
-            toViewController.stuWrite = self.ccStudentWrites[num] as! String
-            toViewController.nonymous = self.ccAnonymouss[num] as! String
-            toViewController.stuRange = self.ccRanges[num] as! String
-            
-        }
-       
-        //print(num, " ? num inside segue")
-    }
     
     // Mark: button handle
     @IBAction func buttonHandler(_ sender: UIButton) {
@@ -311,4 +260,31 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    
+    @IBAction func createBB(_ sender: Any) {
+        performSegue(withIdentifier: "toCreateBB", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navVC = segue.destination as? UINavigationController
+        let identifier = "\(String(describing: segue.identifier ?? "nil") )"
+
+        if identifier == "toCreateBB" {
+            let nextController = navVC?.viewControllers.first as! BulletinCreationViewController
+            nextController.ctID = self.ccIDs
+            
+        }
+
+        if identifier == "gotoEdit" {
+            let nextController = navVC?.viewControllers.first as! BBUpdateViewController
+            nextController.ccID = self.ccID[num] as! String
+            nextController.bulletin = self.ccNames[num] as! String
+            nextController.stuWrite = self.ccStudentWrites[num] as! String
+            nextController.nonymous = self.ccAnonymouss[num] as! String
+            nextController.stuRange = self.ccRanges[num] as! String
+
+        }
+        
+        //print(num, " ? num inside segue")
+    }
 }
