@@ -24,7 +24,8 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
     var ccAnonymouss : NSArray = []
     var ccCharNums : NSArray = []
     var ccItemNums : NSArray = []
-    var ccIDs : String = ""
+    var ccStuNums : NSArray = []
+    var ctID = "c398223976"
     var bulletin : String = ""
     var stuWrite : String = ""
     var nonymous : String = ""
@@ -41,10 +42,11 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.rowHeight = UITableViewAutomaticDimension
         
         setUpNavBar()
+        self.getBBAPI()
         
     }
     override func viewDidAppear(_ animated: Bool){
-        self.getBBAPI()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,12 +66,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-//    @IBAction func createPressed(_ sender: Any) {
-//
-//        performSegue(withIdentifier:"BulletinCreation", sender: self)
-//    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ccNames.count
     }
     
@@ -77,22 +74,14 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         return 122
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "BBcell") as! BBListTableViewCell
-        let cellIdentifier = "BBcell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BBListTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
-//        cell.animalLbl.text = elements[indexPath.row]
-//        cell.animalImage.image = UIImage(named: elements[indexPath.row])
-//        cell.animalImage.layer.cornerRadius = cell.animalImage.frame.height / 2
-        
-        //cell.bbCell.layer.cornerRadius = 5
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BBcell", for: indexPath) as! BBListTableViewCell
         
         if ccRanges[indexPath.row] as? String == "2" {
             cell.ccRange.setTitle("All" , for: .normal)
         } else if ccRanges[indexPath.row]  as? String  == "1" {
-            cell.ccRange.setTitle("Choice" , for: .normal)
+            cell.ccRange.setTitle("Choice(\(ccStuNums[indexPath.row]))" , for: .normal)
         } else {
             cell.ccRange.setTitle("None" , for: .normal)
         }
@@ -130,22 +119,28 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         }
         cell.ccItemNum.text = (ccItemNums[indexPath.row] as! String)
         
+        cell.selectionStyle = .none
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = .white
+        
+        let Dtail = storyboard?.instantiateViewController(withIdentifier: "threadList") as! ThreadViewController
+        Dtail.bbID = ccID[indexPath.row] as! String
+        Dtail.courseCode = ctID
+        navigationController?.pushViewController(Dtail, animated: true)
+        
+        
+    }
     
     // MARK: - UITableViewDelegate Protocol
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
-            // Delete the row from the data source
-            //self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            // Call completion handler with true to indicate
-            
-            //print("This is working")
             
             let Alert = UIAlertController(title: "Warning", message: "Deleting the Bulletin Board deletes all related information such as articles and files under it. Is it OK?", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -166,7 +161,6 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         //let editAction = UIContextualAction(style: .normal, title: "Edit")
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, sourceView, completionHandler) in
             
-            //print("Working in edit action")
             self.num = indexPath.row
             completionHandler(true)
             self.performSegue(withIdentifier: "gotoEdit", sender: self)
@@ -194,12 +188,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
             switch(response.result) {
             case .success(_):
                 let repsoneResult = response.result.value as? NSDictionary
-                //                print("+++++++++++++++++++++++++++")
-                //                print(repsoneResult as Any)
-                
                 let data = repsoneResult!["data"] as! NSArray
-//                print("+++++++++++++++++++++++++++")
-//                print(data)
                 self.ccID = data.value(forKey: "ccID") as! NSArray
                 self.ccRanges = data.value(forKey: "ccStuRange") as! NSArray
                 self.ccDates = data.value(forKey: "ccDate") as! NSArray
@@ -209,10 +198,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
                 self.ccAnonymouss = data.value(forKey: "ccAnonymous") as! NSArray
                 self.ccCharNums = data.value(forKey: "ccCharNum") as! NSArray
                 self.ccItemNums = data.value(forKey: "ccItemNum") as! NSArray
-//                print("@@@@@ result @@@@ ")
-//                print(self.ccNames)
-//                print(self.ccID)
-                
+                self.ccStuNums = data.value(forKey: "ccStuNum") as! NSArray
                 
                 self.tableView.reloadData()
                 break
@@ -256,6 +242,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         
         let Dtail = storyboard?.instantiateViewController(withIdentifier: "threadList") as! ThreadViewController
         Dtail.bbID = ccID[sender.tag] as! String
+        Dtail.courseCode = ctID
         navigationController?.pushViewController(Dtail, animated: true)
         
     }
@@ -271,7 +258,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
 
         if identifier == "toCreateBB" {
             let nextController = navVC?.viewControllers.first as! BulletinCreationViewController
-            nextController.ctID = self.ccIDs
+            nextController.ctID = self.ctID
             
         }
 
@@ -284,7 +271,5 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
             nextController.stuRange = self.ccRanges[num] as! String
 
         }
-        
-        //print(num, " ? num inside segue")
     }
 }

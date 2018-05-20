@@ -12,9 +12,7 @@ class QuestioncmdCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var cmd: UILabel!
-    
     @IBOutlet weak var name: UILabel!
-    
     @IBOutlet weak var cName: UILabel!
     
 }

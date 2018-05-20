@@ -14,7 +14,7 @@ class ThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var postDate: UILabel!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var caption: UILabel!
+    @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentNum: UIButton!
     @IBOutlet weak var viewNum: UIButton!
@@ -22,7 +22,6 @@ class ThreadTableViewCell: UITableViewCell {
     
     
     // MARK: - Dynamic Cell Height for Tweet with/without image
-    
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
     var defaultTweetImageViewHeightConstraint: CGFloat!
     
@@ -37,6 +36,15 @@ class ThreadTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        caption.isScrollEnabled = false
+        let fixedWidth = caption.frame.size.width
+        let newSize = caption.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        caption.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        //caption.linkTextAttributes
+        
+        caption.linkTextAttributes = [ NSAttributedStringKey.foregroundColor.rawValue: UIColor.blue ]
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

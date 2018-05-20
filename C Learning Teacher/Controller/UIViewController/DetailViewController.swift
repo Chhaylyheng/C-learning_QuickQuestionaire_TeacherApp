@@ -60,13 +60,6 @@ class DetailViewController: UIViewController {
     }
     
     
-//    @IBAction func cancleBtn(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "Main")
-//        self.present(controller, animated: true, completion: nil)
-//    }
-    
-    
     
 //    private func setBarChart() -> PNBarChart {
 //        let barChart = PNBarChart(frame: CGRect(x: 0, y: 135, width: 320, height: 200))
@@ -113,8 +106,6 @@ class DetailViewController: UIViewController {
             switch(response.result) {
             case .success(_):
                 if let dictionary = response.result.value as? [String: Any] {
-                    
-                      print (dictionary)
                     let res = dictionary["res"] as! NSDictionary
                     
                     if let bent = res["bent"] as? NSDictionary {
@@ -125,9 +116,7 @@ class DetailViewController: UIViewController {
                         self.noNum = self.numArray[2] as! Int
                         self.yesPer = Int(self.perArray[1] as! Float)
                         self.noPer = Int(self.perArray[2] as! Float)
-//                        print("***")
-//                        print(self.yesNum, " -- yes")
-//                        print(self.noNum, " -- no")
+                        
                         if self.yesNum != 0 || self.noNum != 0 {
                             let pieChart = self.setPieChart()
                             self.view.addSubview(pieChart)
@@ -136,10 +125,8 @@ class DetailViewController: UIViewController {
                         } else {
                             self.noanwserYet.text = "No answer yet!"
                         }
-                        
                     }
-                  
-            }
+                }
                 break
                 
             case .failure(_):
@@ -148,9 +135,6 @@ class DetailViewController: UIViewController {
                 
             }
         }
-        
-        
-        
     }
     
 }

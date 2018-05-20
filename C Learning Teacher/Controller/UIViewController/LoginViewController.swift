@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
     var image : NSData? = nil
     
     
-    
-    
     // Check if it is the valid email
     func isValidEmailAddress(emailAddressString: String) -> Bool {
         
@@ -42,8 +40,6 @@ class LoginViewController: UIViewController {
         
         return  returnValue
     }
-    
-    
 
 }
 
@@ -82,6 +78,7 @@ extension LoginViewController {
     }
 }
 
+
 // Button Action
 extension LoginViewController {
     
@@ -96,6 +93,7 @@ extension LoginViewController {
             return
             
         }
+        
         if ( email.text?.isEmpty)! {
             UIComponentHelper.PresentActivityIndicator(view: self.view, option: false)
             PresentAlertController(title: "Warning", message: "Please properly enter your email", actionTitle: "Got it")

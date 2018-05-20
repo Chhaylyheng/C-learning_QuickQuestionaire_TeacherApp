@@ -23,12 +23,13 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
     @IBOutlet weak var none: DLRadioButton!
     @IBOutlet weak var bulletinName: UITextField!
     
-    
-    var ctID = String()
+    var ctID = ""
+    var ccID = ""
     
     var studentName : NSArray = []
     var studentClass : NSArray = []
     var studentNum : NSArray = []
+    var studentIDs : NSArray = []
     
     var bulletin : String = ""
     var submission : String = ""
@@ -52,16 +53,15 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
         
         getAllStudent()
         
-        
     }
+    
     func createItems(){
         
-        print("\(studentName.count)  ?")
-        
+        //print("\(studentName.count) ?")
         self.items.removeAll()
         self.initialValues.removeAll()
         for i in 0...(studentName.count - 1){
-            items.append(SwiftMultiSelectItem(row: i, title: "\(studentName[i])", description: "\(studentClass[i]) . \(studentNum[i])"))
+            items.append(SwiftMultiSelectItem(row: i, title: "\(studentName[i])", description: "\(studentClass[i]) . \(studentNum[i])", studentID: "\(studentIDs[i])"))
         }
         
         //self.initialValues = [self.items.first!,self.items[1],self.items[2]]
@@ -94,8 +94,10 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
             applicable = "2"
         } else if (sender as AnyObject).tag == 2 {
             
-             SwiftMultiSelect.initialSelected = initialValues
-             SwiftMultiSelect.Show(to: self)
+            applicable = "1"
+            
+            SwiftMultiSelect.initialSelected = initialValues
+            SwiftMultiSelect.Show(to: self)
             
         } else if (sender as AnyObject).tag == 3 {
             applicable = "0"
@@ -159,25 +161,17 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
         }
     }
     
+    
     func createBulletin() {
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateCreate", method: .post, parameters: ["ctID":ctID,"cc_name":bulletin, "cc_stuwrite":submission, "cc_anonymous": nonymous, "cc_sturange": applicable]).responseJSON {
-            response in
-            if response.result.isSuccess {
-                let result = JSON(response.result.value!)
-                if result["mes"] == "success" {
-                    
-                    self.alert.showAlert("Done", subTitle: "Create a new Bulletin Board is Done", style: AlertStyle.none ,buttonTitle: "Okay") { Void in
-                        self.dismiss(animated: true, completion: nil)
-                        
-                    }
-                } else {
-                    print("Request to the create api was not succeed")
-                }
-                
-            }
-            else {
-                print("Error \(String(describing: response.result.error))")
-            }
+        createBulletinBoard()
+    }
+    
+    
+    func AddStudent() {
+        for item in initialValues {
+            //print(item.studentID, "Student ID")
+            addStudentToBB(studentID: item.studentID)
+            
         }
     }
     
@@ -192,7 +186,6 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
     }
     
     func numberOfItemsInSwiftMultiSelect() -> Int {
-        
         return selectedItems.count
     }
     
@@ -217,21 +210,20 @@ class BulletinCreationViewController: UIViewController,SwiftMultiSelectDelegate,
         initialValues   = items
         print("you have been selected: \(items.count) items!")
         
-        for item in items{
+        for item in items {
             print(item.string)
+            print(item.studentID)
         }
-        
     }
     
-
 }
 
 
 // MARK: API
 
 extension BulletinCreationViewController {
-    //https://kit.c-learning.jp/t/ajax/coop/stuadd
     
+    //https://kit.c-learning.jp/t/ajax/coop/stuadd
     // Get all the student name in the class
     func getAllStudent() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/stuadd", method: .post, parameters: ["ctID":"c398223976"], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
@@ -243,9 +235,7 @@ extension BulletinCreationViewController {
                 self.studentName = data.value(forKey: "stName") as! NSArray
                 self.studentClass = data.value(forKey: "stClass") as! NSArray
                 self.studentNum = data.value(forKey: "stNO") as! NSArray
-                
-                print("+++++++++++++++++++++++++++")
-                print(self.studentName as Any)
+                self.studentIDs = data.value(forKey: "stID") as! NSArray
                 
                 self.createItems()
                 
@@ -258,6 +248,50 @@ extension BulletinCreationViewController {
                 self.present(alertController, animated: true, completion: nil)
 
                 break;
+            }
+        }
+    }
+    
+    
+    
+    // MARK: Create Bulletin Board
+    func createBulletinBoard() {
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/cateCreate", method: .post, parameters: ["ctID":ctID,"cc_name":bulletin, "cc_stuwrite":submission, "cc_anonymous": nonymous, "cc_sturange": applicable]).responseJSON {
+            response in
+            if response.result.isSuccess {
+                let result = JSON(response.result.value!)
+                self.ccID = result["mes"].string!
+                if self.applicable.isEqual("1") {
+                    self.AddStudent()
+                }
+                self.alert.showAlert("Done", subTitle: "Create a new Bulletin Board is Done", style: AlertStyle.none ,buttonTitle: "Okay") { Void in
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
+            }
+            else {
+                print("Error \(String(describing: response.result.error))")
+            }
+        }
+    }
+    
+    
+    
+    // MARK: Add Student into Bulletin Board after create Bulletin Board
+    func addStudentToBB(studentID: String) {
+        Alamofire.request("http://kit.c-learning.jp/t/ajax/coop/CoopAdd", method: .post, parameters: ["ct": ctID, "cc": ccID, "st": studentID as Any]).responseJSON {
+            response in
+            if response.result.isSuccess {
+                let result = JSON(response.result.value!)
+                print(result)
+                if result["err"] == 0 && result["res"] == 1 {
+                    print("Successful add students into choice")
+                } else {
+                    print("Students are not successful add to Bulletin Board")
+                }
+            } else {
+                print("Error \(String(describing: response.result.error))")
             }
             
         }

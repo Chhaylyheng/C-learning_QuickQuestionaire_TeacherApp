@@ -20,7 +20,6 @@ public enum SwiftMultiSelectSourceType : Int{
 public class SwiftMultiSelect{
 
     public static var items             :   [SwiftMultiSelectItem]?
-    
     public static var dataSourceType    :   SwiftMultiSelectSourceType? {
         didSet{
             self.items = nil
@@ -33,7 +32,6 @@ public class SwiftMultiSelect{
         
         didSet{
             self.items = nil
-            
         }
         
     }
@@ -170,6 +168,7 @@ public struct SwiftMultiSelectItem{
     public var userInfo     :   Any?
     public var color        :   UIColor?
     public var row          :   Int?
+    public var studentID    :   String
     
     ///Unique identifier
     fileprivate(set) var id :   Int?
@@ -193,10 +192,11 @@ public struct SwiftMultiSelectItem{
     ///   - image: image asset
     ///   - imageURL: image url
     ///   - userInfo: optional information data
-    public init(row:Int,title:String,description:String? = nil,image:UIImage? = nil,imageURL:String? = nil,color:UIColor? = nil, userInfo:Any? = nil) {
+    public init(row:Int,title:String,description:String? = nil,image:UIImage? = nil,imageURL:String? = nil,color:UIColor? = nil, userInfo:Any? = nil, studentID:String) {
         
         self.title = title
         self.row   = row
+        self.studentID = studentID
         
         if let desc = description{
             self.description = desc

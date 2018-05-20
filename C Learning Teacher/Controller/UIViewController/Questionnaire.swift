@@ -226,7 +226,6 @@ extension Questionnaire {
         } else if checkQuestionqbID == "23" {
             let Dtail = storyboard?.instantiateViewController(withIdentifier: "yesNoCM")
             qbID  = questionQb[sender.tag] as! String
-            print(qbID,"++++")
             qbTitle = questionTitle[sender.tag] as! String
             navigationController?.pushViewController(Dtail!, animated: true)
         } else if checkQuestionqbID == "24" {
@@ -334,7 +333,7 @@ extension Questionnaire {
             print("Error label not in tableView")
             return
         }
-        print(index.row, "###")
+        //print(index.row, "###")
 
     }
 

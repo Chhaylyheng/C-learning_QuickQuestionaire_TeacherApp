@@ -27,6 +27,8 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var bbID : String = ""
     // profile image
     var username : NSArray = []
+    var ttNames : NSArray = []
+    var stNames : NSArray = []
     var postDate : NSArray = []
     var threadTitle : NSArray = []
     var threadCaption : NSArray = []
@@ -51,7 +53,6 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
-    
     @IBAction func showBarButtonDropDown(_ sender: Any) {
         rightBarDropDown.show()
     }
@@ -138,39 +139,37 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //For back button in navigation bar
         let backButton = UIBarButtonItem()
-        backButton.title = "Back"
+        //backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-        
-    }
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return username.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //print(num, "#")
         let cell = tableView.dequeueReusableCell(withIdentifier: "threadCell", for: indexPath) as! ThreadTableViewCell
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLabelTap))
+        
         cell.addGestureRecognizer(gestureRecognizer)
 
         cell.optionItem.tag = indexPath.row
         cell.optionItem.addTarget(self, action: #selector(optionHandler), for: .touchUpInside)
         //cell.optionItem.frame = cell.frame
         
-        cell.username.text = (username[indexPath.row] as! String)
+        
+        if ttNames[indexPath.row] as? String == nil {
+            cell.username.text = (stNames[indexPath.row] as! String)
+        } else {
+            cell.username.text = (ttNames[indexPath.row] as! String)
+        }
         cell.postDate.text = (postDate[indexPath.row] as! String)
         cell.title.text = (threadTitle[indexPath.row] as! String)
         cell.caption.text = (threadCaption[indexPath.row] as! String)
         //cell.commentNum.setTitle((commentNum[indexPath.row] as! String), for: .normal)
-        cell.viewNum.setTitle((seenNum[indexPath.row] as! String), for: .normal)
+        cell.viewNum.setTitle("  \(seenNum[indexPath.row])", for: .normal)
         
         
         cell.commentNum.tag = indexPath.row
@@ -180,13 +179,8 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let picture = pictures[indexPath.row] as! String
         
         if picture.isEmpty {
-            //print("couldn't found the image")
             cell.postImage?.image = nil
             cell.postImage.isHidden = true
-            //let screenSize: CGRect = UIScreen.main.bounds
-            //cell.postImage.frame = CGRect(x: 0, y: 0, width: 50, height: 0)
-            //cell.frame = CGRect(x: 0, y: 0, width: 50, height: 0)
-            //loadViewIfNeeded()
             
         } else if (!picture.isEqual("")){
             let num = indexPath.row
@@ -237,35 +231,40 @@ extension ThreadViewController {
     
     
     @objc func handleLabelTap(sender: UIGestureRecognizer) {
-        let position = sender.location(in: self.tableView)
-        guard let index = self.tableView.indexPathForRow(at: position) else {
-            print("Error label not in tableView")
-            return
+            
+        let touchPoint = sender.location(in: self.view)
+        if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+            print(indexPath[1])
         }
-        print(index.row, "###")
-        centeredDropDown.show()
+        let position = sender.location(in: self.tableView)
+        
+        let index = self.tableView.indexPathForRow(at: position)
+        print(index?.row as Any)
+        
+        //centeredDropDown.show()
         
     }
     
     
     @IBAction func commentHandler(_ sender: UIButton){
-        let Dtail = storyboard?.instantiateViewController(withIdentifier: "commentThread") as! CommentThreadViewController
-        Dtail.userName = self.username[sender.tag] as! String
-        Dtail.postDate = self.postDate[sender.tag] as! String
-        Dtail.threadTitle = self.threadTitle[sender.tag] as! String
-        Dtail.threadBody = self.threadCaption[sender.tag] as! String
-        Dtail.postImageName = self.pictures[sender.tag] as! String
+        let NextController = storyboard?.instantiateViewController(withIdentifier: "threadComment") as! ThreadCommentViewController
+        NextController.ccID = bbID
+        NextController.ctID = courseCode
+        NextController.cNO = String(describing: self.cNo[sender.tag])
+        NextController.username = String(describing: self.username[sender.tag])
+        NextController.postDate = String(describing: self.postDate[sender.tag])
+        NextController.threadTitle = String(describing: self.threadTitle[sender.tag])
+        NextController.threadBody = String(describing: self.threadCaption[sender.tag])
+        NextController.postImageName = String(describing: self.pictures[sender.tag])
         //Dtail.commentNum =
-        Dtail.seenNum = self.seenNum[sender.tag] as! String
+        NextController.seenNum = String(describing: self.seenNum[sender.tag])
         
-        navigationController?.pushViewController(Dtail, animated: true)
-        //popToViewController
+        navigationController?.pushViewController(NextController, animated: true)
+        
     }
     
     
     @IBAction func optionHandler(_ sender: UIButton) {
-//        let title = threadTitle[sender.tag] as! String
-//        let body = threadCaption[sender.tag] as! String
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let editInfor = UIAlertAction(title: "Edit", style: .default, handler: { (alert: UIAlertAction!) -> Void in
@@ -291,8 +290,8 @@ extension ThreadViewController {
             popoverController.permittedArrowDirections = []
         }
         
-        //        alertController.popoverPresentationController?.sourceView = view
-        //        alertController.popoverPresentationController?.sourceRect = sender.frame
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = sender.frame
         
         alertController.addAction(editInfor)
         alertController.addAction(deleteQuest)
@@ -334,6 +333,7 @@ extension ThreadViewController {
 // MARK: API Request
 
 extension ThreadViewController {
+    
     func getThreadAPI() {
         Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/thread", method: .post, parameters: ["ccID":bbID], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
@@ -341,24 +341,17 @@ extension ThreadViewController {
             case .success(_):
                 let repsoneResult = response.result.value as? NSDictionary
                 
-                //print(repsoneResult?.allKeys,"###")
                 let data = repsoneResult!["mes"] as! NSArray
-                //                print("+++++++++++++++++++++++++++")
-                //                print(data)
                 self.cNo = data.value(forKey: "cNO") as! NSArray
                 self.username = data.value(forKey: "cName") as! NSArray
+                self.ttNames = data.value(forKey: "ttName") as! NSArray
+                self.stNames = data.value(forKey: "stName") as! NSArray
                 self.postDate = data.value(forKey: "cDate") as! NSArray
                 self.threadTitle = data.value(forKey: "cTitle") as! NSArray
                 self.threadCaption = data.value(forKey: "cText") as! NSArray
                 self.commentNum = data.value(forKey: "cNO") as! NSArray
                 self.seenNum = data.value(forKey: "cAlreadyNum") as! NSArray
                 self.pictures = data.value(forKey: "fID1") as! NSArray
-                // now no profile image & thread image
-                
-                
-                print("@@@@@ result @@@@ ")
-                //                print(self.username)
-                print(self.pictures)
                 
                 self.tableView.reloadData()
                 break
@@ -398,7 +391,7 @@ extension ThreadViewController {
             
             switch(response.result) {
             case .success(_):
-                if response.result.value != nil{
+                if response.result.value != nil {
                     print(response.result.value as Any)
                 }
                 self.getThreadAPI()

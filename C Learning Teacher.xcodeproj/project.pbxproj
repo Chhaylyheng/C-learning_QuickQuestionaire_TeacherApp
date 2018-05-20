@@ -66,9 +66,13 @@
 		474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C438A2036CC3F00B03006 /* LoginViewController.swift */; };
 		4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */; };
 		4754CB85204667970040BC79 /* BulletinCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB84204667970040BC79 /* BulletinCreationViewController.swift */; };
-		47F09609206A897E00B3E1A9 /* CommentThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */; };
-		47F0960B206A8ABA00B3E1A9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */; };
-		47F0960D206A8E1200B3E1A9 /* ThreadHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */; };
+		475846022076961D006C50E6 /* ThreadCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475846012076961D006C50E6 /* ThreadCommentViewController.swift */; };
+		47F2A18820970C330074A5CB /* ThreadHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */; };
+		47F2A18920970C330074A5CB /* ThreadHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */; };
+		47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */; };
+		47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */; };
+		47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */; };
+		47F2A19520970CD60074A5CB /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A19320970CD60074A5CB /* CommentsTableViewCell.xib */; };
 		47FEE1D2205626CC00675DDE /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1D1205626CC00675DDE /* ThreadViewController.swift */; };
 		47FEE1DE20595D1100675DDE /* ThreadCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */; };
 		C56674FB202F3643007B4D87 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56674FA202F3643007B4D87 /* PNBar.swift */; };
@@ -145,9 +149,14 @@
 		474C438A2036CC3F00B03006 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinboardCellTableViewCell.swift; sourceTree = "<group>"; };
 		4754CB84204667970040BC79 /* BulletinCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinCreationViewController.swift; sourceTree = "<group>"; };
-		47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentThreadViewController.swift; sourceTree = "<group>"; };
-		47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeaderView.swift; sourceTree = "<group>"; };
+		475846012076961D006C50E6 /* ThreadCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCommentViewController.swift; sourceTree = "<group>"; };
+		479AAC3520A5E79B0075EF8A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeadTableViewCell.swift; sourceTree = "<group>"; };
+		47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadHeadTableViewCell.xib; sourceTree = "<group>"; };
+		47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
+		47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
+		47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		47F2A19320970CD60074A5CB /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		47FEE1D1205626CC00675DDE /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCreateViewController.swift; sourceTree = "<group>"; };
 		89BAF659598A329AEF0CCC50 /* Pods-C Learning Teacher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C Learning Teacher.release.xcconfig"; path = "Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +222,7 @@
 		39E1A9800C26429B5A08301D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				479AAC3520A5E79B0075EF8A /* AssetsLibrary.framework */,
 				232CA50BE37BBD967E08EA7E /* Pods_C_Learning_Teacher.framework */,
 			);
 			name = Frameworks;
@@ -296,6 +306,19 @@
 			isa = PBXGroup;
 			children = (
 				473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */,
+				47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */,
+				47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */,
+				47F2A19320970CD60074A5CB /* CommentsTableViewCell.xib */,
+				47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */,
+				47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */,
+				47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */,
+				470B1153205580AE004CD764 /* ThreadTableViewCell.swift */,
+				473CC857202AF533006C0312 /* DropDownViews.swift */,
+				473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */,
+				47116FFF2060F26900CC5264 /* QQTableViewCell.swift */,
+				1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */,
+				4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */,
+				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -318,7 +341,7 @@
 				47FEE1D1205626CC00675DDE /* ThreadViewController.swift */,
 				47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */,
 				4704084320708E1A00066348 /* ThreadUpdateViewController.swift */,
-				47F09608206A897E00B3E1A9 /* CommentThreadViewController.swift */,
+				475846012076961D006C50E6 /* ThreadCommentViewController.swift */,
 				C59B1EB5202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift */,
 				1CCF1846202EEAF2004A2683 /* BarChartViewController.swift */,
 				C59B1EB9202CC98F00C00FC4 /* CustomAlertViewController.swift */,
@@ -337,25 +360,8 @@
 				C56674F9202F3495007B4D87 /* Bar */,
 				1C2CA658202DA1B20064070A /* Helper */,
 				1C2CA657202DA19D0064070A /* PieChart */,
-				473CC856202AF4C5006C0312 /* Cell */,
 			);
 			path = TableViewController;
-			sourceTree = "<group>";
-		};
-		473CC856202AF4C5006C0312 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				473CC857202AF533006C0312 /* DropDownViews.swift */,
-				473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */,
-				47116FFF2060F26900CC5264 /* QQTableViewCell.swift */,
-				1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */,
-				4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */,
-				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
-				470B1153205580AE004CD764 /* ThreadTableViewCell.swift */,
-				47F0960A206A8ABA00B3E1A9 /* CommentTableViewCell.swift */,
-				47F0960C206A8E1200B3E1A9 /* ThreadHeaderView.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		47FE25E2202AB2FB00E02BCE /* View */ = {
@@ -443,6 +449,20 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -472,7 +492,10 @@
 				470479EB205242C9000D0274 /* BBCreate.storyboard in Resources */,
 				4717313D20298F0B00EBA628 /* LaunchScreen.storyboard in Resources */,
 				473CC85C202AF58E006C0312 /* CustomAlertViewController.xib in Resources */,
+				47F2A19520970CD60074A5CB /* CommentsTableViewCell.xib in Resources */,
+				47F2A18920970C330074A5CB /* ThreadHeadTableViewCell.xib in Resources */,
 				4717313A20298F0B00EBA628 /* Assets.xcassets in Resources */,
+				47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */,
 				4717313820298F0B00EBA628 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,13 +589,13 @@
 				1C10073620309D4000572106 /* UIHelper.swift in Sources */,
 				1C06B41A20341438005349FB /* PreviewTwoViewController.swift in Sources */,
 				4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */,
-				47F0960D206A8E1200B3E1A9 /* ThreadHeaderView.swift in Sources */,
 				47068B3F203B35C800099DE9 /* MenuViewController.swift in Sources */,
 				47FEE1D2205626CC00675DDE /* ThreadViewController.swift in Sources */,
 				C56674FF202F41D5007B4D87 /* ChooiceQuestionViewController.swift in Sources */,
 				1C06B428203414D2005349FB /* PreviewFiveCMViewController.swift in Sources */,
 				4754CB85204667970040BC79 /* BulletinCreationViewController.swift in Sources */,
 				C56674FB202F3643007B4D87 /* PNBar.swift in Sources */,
+				47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */,
 				1C06B41C2034144C005349FB /* PreviewTwoCMViewController.swift in Sources */,
 				47005ADC2036DA15001C1ACA /* UIComponentHelper.swift in Sources */,
 				47068B3D203B2EEF00099DE9 /* UserProfileCoreData.swift in Sources */,
@@ -582,7 +605,6 @@
 				47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */,
 				47FEE1DE20595D1100675DDE /* ThreadCreateViewController.swift in Sources */,
 				4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */,
-				47F0960B206A8ABA00B3E1A9 /* CommentTableViewCell.swift in Sources */,
 				C59B1EB6202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift in Sources */,
 				1C06B42E20341BA5005349FB /* DLRadioButton.m in Sources */,
 				1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */,
@@ -590,8 +612,8 @@
 				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
 				471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
-				47F09609206A897E00B3E1A9 /* CommentThreadViewController.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,
+				47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */,
 				4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */,
 				1C2CA65A202DA1E40064070A /* PNColor.swift in Sources */,
 				C59B1EBA202CC98F00C00FC4 /* CustomAlertViewController.swift in Sources */,
@@ -605,6 +627,7 @@
 				4704084420708E1A00066348 /* ThreadUpdateViewController.swift in Sources */,
 				470276E4205391B90030BD5E /* BBUpdateViewController.swift in Sources */,
 				47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */,
+				47F2A18820970C330074A5CB /* ThreadHeadTableViewCell.swift in Sources */,
 				1C2CA666202DA3430064070A /* ChartTableViewCell.swift in Sources */,
 				474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */,
 				1C06B43220348168005349FB /* BarChartFourViewController.swift in Sources */,
@@ -616,6 +639,7 @@
 				470B1154205580AE004CD764 /* ThreadTableViewCell.swift in Sources */,
 				47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */,
 				47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */,
+				475846022076961D006C50E6 /* ThreadCommentViewController.swift in Sources */,
 				1C2CA65E202DA2560064070A /* PNPieChart.swift in Sources */,
 				470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */,
 				1C06B424203414B2005349FB /* PreviewFourCMViewController.swift in Sources */,

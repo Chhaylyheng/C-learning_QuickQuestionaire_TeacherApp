@@ -40,12 +40,6 @@ class BBUpdateViewController: UIViewController {
         buttonStyle()
         dataValue()
         
-//        print(" @@@@@@ ")
-//        print(ccID, " ? ccID in Update controller")
-//        print(bulletin)
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
