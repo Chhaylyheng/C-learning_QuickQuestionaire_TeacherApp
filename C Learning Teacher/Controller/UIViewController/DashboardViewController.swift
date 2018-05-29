@@ -31,6 +31,13 @@ class DashboardViewController: UIViewController {
         navigationController?.pushViewController(BulletinBoard, animated: true)
     }
     
+    @IBAction func TeachingLearningMaterialPressed(_ sender: Any) {
+        let TeachingLearningMaterial = storyboard?.instantiateViewController(withIdentifier: "MaterialList") as! MaterialListTableViewController
+        navigationController?.pushViewController(TeachingLearningMaterial, animated: true)
+        
+    }
+    
+    
     func setUpNavBar(){
         //For title in navigation bar
         self.navigationController?.view.backgroundColor = UIColor.white

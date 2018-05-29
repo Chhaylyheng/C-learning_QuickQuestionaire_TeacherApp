@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A817760A21260F249D3AB661F7F11946"
+               BlueprintIdentifier = "1473A963B33A3B20B9B187FC31AFC7CB"
                BlueprintName = "Popover"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Popover.framework">

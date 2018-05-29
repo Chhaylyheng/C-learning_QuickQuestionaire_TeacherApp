@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B615593BFAC0BD5E548766784BE6975E"
+               BlueprintIdentifier = "6F0C440CEFC2F365BD4980BA38F6C00C"
                BlueprintName = "SwiftMultiSelect"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "SwiftMultiSelect.framework">

@@ -14,6 +14,8 @@ target 'C Learning Teacher' do
   pod 'DropDown'
   pod "Popover"
   pod 'SwiftMultiSelect'
+  pod 'ImageSlideshow', '~> 1.5'
+  pod "ImageSlideshow/Kingfisher"
   # Pods for C Learning Teacher
 
 end

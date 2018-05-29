@@ -49,11 +49,12 @@
 		47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47068B40203BD12500099DE9 /* coredata.xcdatamodeld */; };
 		47068B44203C0C1D00099DE9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47068B43203C0C1C00099DE9 /* RoundButton.swift */; };
 		470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */; };
-		470B1154205580AE004CD764 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B1153205580AE004CD764 /* ThreadTableViewCell.swift */; };
 		470EEDF42050FF14002B5DC1 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF32050FF13002B5DC1 /* PopupController.swift */; };
 		470EEDF8205180A8002B5DC1 /* BBCreatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */; };
 		471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47116FFF2060F26900CC5264 /* QQTableViewCell.swift */; };
 		4711C6DC20455CB200826C9E /* BulletinBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */; };
+		4712606F20B561A6002D3861 /* ThreadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4712606D20B561A6002D3861 /* ThreadTableCell.swift */; };
+		4712607020B561A6002D3861 /* ThreadTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4712606E20B561A6002D3861 /* ThreadTableCell.xib */; };
 		4717313320298F0B00EBA628 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313220298F0B00EBA628 /* AppDelegate.swift */; };
 		4717313520298F0B00EBA628 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4717313420298F0B00EBA628 /* Questionnaire.swift */; };
 		4717313820298F0B00EBA628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4717313620298F0B00EBA628 /* Main.storyboard */; };
@@ -64,11 +65,13 @@
 		473CC861202B1E80006C0312 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */; };
 		4742EB21204FEB19000FFE85 /* BBListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */; };
 		474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C438A2036CC3F00B03006 /* LoginViewController.swift */; };
-		4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */; };
 		4754CB85204667970040BC79 /* BulletinCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754CB84204667970040BC79 /* BulletinCreationViewController.swift */; };
 		475846022076961D006C50E6 /* ThreadCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475846012076961D006C50E6 /* ThreadCommentViewController.swift */; };
-		47F2A18820970C330074A5CB /* ThreadHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */; };
-		47F2A18920970C330074A5CB /* ThreadHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */; };
+		4771658720B7FA7B00AD842C /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771658520B7FA7B00AD842C /* CategoryTableViewCell.swift */; };
+		4771658820B7FA7B00AD842C /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4771658620B7FA7B00AD842C /* CategoryTableViewCell.xib */; };
+		4771658F20B84F2100AD842C /* MaterialListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771658E20B84F2100AD842C /* MaterialListTableViewController.swift */; };
+		4771659420B87AAB00AD842C /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771659320B87AAB00AD842C /* Material.swift */; };
+		4771659820BC2F4300AD842C /* CardViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771659720BC2F4300AD842C /* CardViewHelper.swift */; };
 		47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */; };
 		47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */; };
 		47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */; };
@@ -130,11 +133,12 @@
 		47068B41203BD12500099DE9 /* coredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata.xcdatamodel; sourceTree = "<group>"; };
 		47068B43203C0C1C00099DE9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = "C Learning Teacher/RoundButton.swift"; sourceTree = SOURCE_ROOT; };
 		470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessing.swift; sourceTree = "<group>"; };
-		470B1153205580AE004CD764 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		470EEDF32050FF13002B5DC1 /* PopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		470EEDF7205180A8002B5DC1 /* BBCreatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBCreatePopUpViewController.swift; sourceTree = "<group>"; };
 		47116FFF2060F26900CC5264 /* QQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQTableViewCell.swift; sourceTree = "<group>"; };
 		4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardViewController.swift; sourceTree = "<group>"; };
+		4712606D20B561A6002D3861 /* ThreadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableCell.swift; sourceTree = "<group>"; };
+		4712606E20B561A6002D3861 /* ThreadTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadTableCell.xib; sourceTree = "<group>"; };
 		4717312F20298F0B00EBA628 /* C Learning Teacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "C Learning Teacher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4717313220298F0B00EBA628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4717313420298F0B00EBA628 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
@@ -147,12 +151,14 @@
 		473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBListTableViewCell.swift; sourceTree = "<group>"; };
 		474C438A2036CC3F00B03006 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinboardCellTableViewCell.swift; sourceTree = "<group>"; };
 		4754CB84204667970040BC79 /* BulletinCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinCreationViewController.swift; sourceTree = "<group>"; };
 		475846012076961D006C50E6 /* ThreadCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadCommentViewController.swift; sourceTree = "<group>"; };
+		4771658520B7FA7B00AD842C /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		4771658620B7FA7B00AD842C /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		4771658E20B84F2100AD842C /* MaterialListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialListTableViewController.swift; sourceTree = "<group>"; };
+		4771659320B87AAB00AD842C /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		4771659720BC2F4300AD842C /* CardViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewHelper.swift; sourceTree = "<group>"; };
 		479AAC3520A5E79B0075EF8A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeadTableViewCell.swift; sourceTree = "<group>"; };
-		47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadHeadTableViewCell.xib; sourceTree = "<group>"; };
 		47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
 		47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 				47005ADD2037F1BD001C1ACA /* Screen.swift */,
 				47068B3C203B2EEF00099DE9 /* UserProfileCoreData.swift */,
 				470AE27F206CB0C9004E5A1D /* NetworkProcessing.swift */,
+				4771659720BC2F4300AD842C /* CardViewHelper.swift */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -289,6 +296,7 @@
 		4717313120298F0B00EBA628 /* C Learning Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				4771659020B8797B00AD842C /* Model */,
 				47FE25E2202AB2FB00E02BCE /* View */,
 				47FE25E3202AB30600E02BCE /* Controller */,
 				47FE25E7202AB33600E02BCE /* Resource */,
@@ -305,20 +313,11 @@
 		473CC853202AF48F006C0312 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				4771658420B7FA0C00AD842C /* Teaching & Learning Material Cell */,
+				4771658220B7F87C00AD842C /* Bulletin Board Cell */,
+				4771658320B7F96700AD842C /* Questionnaire Cell */,
 				473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */,
-				47F2A18720970C330074A5CB /* ThreadHeadTableViewCell.xib */,
-				47F2A18620970C330074A5CB /* ThreadHeadTableViewCell.swift */,
-				47F2A19320970CD60074A5CB /* CommentsTableViewCell.xib */,
-				47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */,
-				47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */,
-				47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */,
-				470B1153205580AE004CD764 /* ThreadTableViewCell.swift */,
 				473CC857202AF533006C0312 /* DropDownViews.swift */,
-				473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */,
-				47116FFF2060F26900CC5264 /* QQTableViewCell.swift */,
-				1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */,
-				4754CB822045CA820040BC79 /* BulletinboardCellTableViewCell.swift */,
-				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -326,30 +325,15 @@
 		473CC854202AF4A1006C0312 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4771658B20B8487500AD842C /* Teaching & Learning Materials */,
+				4771658920B8479E00AD842C /* Bulletin Board */,
+				4771658A20B847B800AD842C /* Questionnaries */,
 				470EEDED2050FB4E002B5DC1 /* PopUpController */,
 				47005ADA2036D9BB001C1ACA /* HelperClass */,
-				1C06B4142034134D005349FB /* Preview */,
 				474C438A2036CC3F00B03006 /* LoginViewController.swift */,
 				4700284A203ACC43003CF4EB /* CourseListViewController.swift */,
 				47068B3E203B35C800099DE9 /* MenuViewController.swift */,
 				47068B35203B193400099DE9 /* DashboardViewController.swift */,
-				4717313420298F0B00EBA628 /* Questionnaire.swift */,
-				1C2CA663202DA31E0064070A /* DetailViewController.swift */,
-				4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */,
-				4754CB84204667970040BC79 /* BulletinCreationViewController.swift */,
-				470276E3205391B90030BD5E /* BBUpdateViewController.swift */,
-				47FEE1D1205626CC00675DDE /* ThreadViewController.swift */,
-				47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */,
-				4704084320708E1A00066348 /* ThreadUpdateViewController.swift */,
-				475846012076961D006C50E6 /* ThreadCommentViewController.swift */,
-				C59B1EB5202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift */,
-				1CCF1846202EEAF2004A2683 /* BarChartViewController.swift */,
-				C59B1EB9202CC98F00C00FC4 /* CustomAlertViewController.swift */,
-				1C2CA665202DA3430064070A /* ChartTableViewCell.swift */,
-				1CCF184C202F177A004A2683 /* QuestionwithcmdViewController.swift */,
-				C56674FE202F41D5007B4D87 /* ChooiceQuestionViewController.swift */,
-				1C06B43120348168005349FB /* BarChartFourViewController.swift */,
-				1C06B43320348490005349FB /* BarChartThreeViewController.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -362,6 +346,87 @@
 				1C2CA657202DA19D0064070A /* PieChart */,
 			);
 			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		4771658220B7F87C00AD842C /* Bulletin Board Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */,
+				4712606D20B561A6002D3861 /* ThreadTableCell.swift */,
+				4712606E20B561A6002D3861 /* ThreadTableCell.xib */,
+				47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */,
+				47F2A19320970CD60074A5CB /* CommentsTableViewCell.xib */,
+				47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */,
+				47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */,
+			);
+			path = "Bulletin Board Cell";
+			sourceTree = "<group>";
+		};
+		4771658320B7F96700AD842C /* Questionnaire Cell */ = {
+			isa = PBXGroup;
+			children = (
+				473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */,
+				47116FFF2060F26900CC5264 /* QQTableViewCell.swift */,
+				1CCF184E202F227F004A2683 /* QuestioncmdCollectionViewCell.swift */,
+			);
+			path = "Questionnaire Cell";
+			sourceTree = "<group>";
+		};
+		4771658420B7FA0C00AD842C /* Teaching & Learning Material Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4771658520B7FA7B00AD842C /* CategoryTableViewCell.swift */,
+				4771658620B7FA7B00AD842C /* CategoryTableViewCell.xib */,
+			);
+			path = "Teaching & Learning Material Cell";
+			sourceTree = "<group>";
+		};
+		4771658920B8479E00AD842C /* Bulletin Board */ = {
+			isa = PBXGroup;
+			children = (
+				4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */,
+				4754CB84204667970040BC79 /* BulletinCreationViewController.swift */,
+				470276E3205391B90030BD5E /* BBUpdateViewController.swift */,
+				47FEE1D1205626CC00675DDE /* ThreadViewController.swift */,
+				47FEE1DD20595D1100675DDE /* ThreadCreateViewController.swift */,
+				4704084320708E1A00066348 /* ThreadUpdateViewController.swift */,
+				475846012076961D006C50E6 /* ThreadCommentViewController.swift */,
+			);
+			path = "Bulletin Board";
+			sourceTree = "<group>";
+		};
+		4771658A20B847B800AD842C /* Questionnaries */ = {
+			isa = PBXGroup;
+			children = (
+				1C06B4142034134D005349FB /* Preview */,
+				4717313420298F0B00EBA628 /* Questionnaire.swift */,
+				1C2CA663202DA31E0064070A /* DetailViewController.swift */,
+				1CCF1846202EEAF2004A2683 /* BarChartViewController.swift */,
+				C59B1EB9202CC98F00C00FC4 /* CustomAlertViewController.swift */,
+				C59B1EB5202CC87D00C00FC4 /* CustomAlertViewTransitioner.swift */,
+				1C2CA665202DA3430064070A /* ChartTableViewCell.swift */,
+				1CCF184C202F177A004A2683 /* QuestionwithcmdViewController.swift */,
+				C56674FE202F41D5007B4D87 /* ChooiceQuestionViewController.swift */,
+				1C06B43120348168005349FB /* BarChartFourViewController.swift */,
+				1C06B43320348490005349FB /* BarChartThreeViewController.swift */,
+			);
+			path = Questionnaries;
+			sourceTree = "<group>";
+		};
+		4771658B20B8487500AD842C /* Teaching & Learning Materials */ = {
+			isa = PBXGroup;
+			children = (
+				4771658E20B84F2100AD842C /* MaterialListTableViewController.swift */,
+			);
+			path = "Teaching & Learning Materials";
+			sourceTree = "<group>";
+		};
+		4771659020B8797B00AD842C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4771659320B87AAB00AD842C /* Material.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		47FE25E2202AB2FB00E02BCE /* View */ = {
@@ -492,8 +557,9 @@
 				470479EB205242C9000D0274 /* BBCreate.storyboard in Resources */,
 				4717313D20298F0B00EBA628 /* LaunchScreen.storyboard in Resources */,
 				473CC85C202AF58E006C0312 /* CustomAlertViewController.xib in Resources */,
+				4771658820B7FA7B00AD842C /* CategoryTableViewCell.xib in Resources */,
+				4712607020B561A6002D3861 /* ThreadTableCell.xib in Resources */,
 				47F2A19520970CD60074A5CB /* CommentsTableViewCell.xib in Resources */,
-				47F2A18920970C330074A5CB /* ThreadHeadTableViewCell.xib in Resources */,
 				4717313A20298F0B00EBA628 /* Assets.xcassets in Resources */,
 				47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */,
 				4717313820298F0B00EBA628 /* Main.storyboard in Resources */,
@@ -546,6 +612,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -561,6 +629,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -609,12 +679,12 @@
 				1C06B42E20341BA5005349FB /* DLRadioButton.m in Sources */,
 				1CCF184F202F227F004A2683 /* QuestioncmdCollectionViewCell.swift in Sources */,
 				1C06B42A203414EE005349FB /* PreviewCMonlyViewController.swift in Sources */,
+				4771658F20B84F2100AD842C /* MaterialListTableViewController.swift in Sources */,
 				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
 				471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,
 				47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */,
-				4754CB832045CA820040BC79 /* BulletinboardCellTableViewCell.swift in Sources */,
 				1C2CA65A202DA1E40064070A /* PNColor.swift in Sources */,
 				C59B1EBA202CC98F00C00FC4 /* CustomAlertViewController.swift in Sources */,
 				1C2CA660202DA26D0064070A /* PNPieChartDataItem.swift in Sources */,
@@ -627,7 +697,6 @@
 				4704084420708E1A00066348 /* ThreadUpdateViewController.swift in Sources */,
 				470276E4205391B90030BD5E /* BBUpdateViewController.swift in Sources */,
 				47068B42203BD12500099DE9 /* coredata.xcdatamodeld in Sources */,
-				47F2A18820970C330074A5CB /* ThreadHeadTableViewCell.swift in Sources */,
 				1C2CA666202DA3430064070A /* ChartTableViewCell.swift in Sources */,
 				474C438B2036CC3F00B03006 /* LoginViewController.swift in Sources */,
 				1C06B43220348168005349FB /* BarChartFourViewController.swift in Sources */,
@@ -636,11 +705,14 @@
 				1C06B4112032E9F8005349FB /* PreviewYesNoViewController.swift in Sources */,
 				470EEDF42050FF14002B5DC1 /* PopupController.swift in Sources */,
 				1C06B42020341474005349FB /* PreviewThreeCMViewController.swift in Sources */,
-				470B1154205580AE004CD764 /* ThreadTableViewCell.swift in Sources */,
+				4771659420B87AAB00AD842C /* Material.swift in Sources */,
 				47068B36203B193400099DE9 /* DashboardViewController.swift in Sources */,
+				4771659820BC2F4300AD842C /* CardViewHelper.swift in Sources */,
 				47005ADE2037F1BD001C1ACA /* Screen.swift in Sources */,
 				475846022076961D006C50E6 /* ThreadCommentViewController.swift in Sources */,
 				1C2CA65E202DA2560064070A /* PNPieChart.swift in Sources */,
+				4771658720B7FA7B00AD842C /* CategoryTableViewCell.swift in Sources */,
+				4712606F20B561A6002D3861 /* ThreadTableCell.swift in Sources */,
 				470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */,
 				1C06B424203414B2005349FB /* PreviewFourCMViewController.swift in Sources */,
 				1C06B4182034141D005349FB /* PreviewAgreeDisagreeCMViewController.swift in Sources */,
