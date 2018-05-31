@@ -44,6 +44,7 @@ PODS:
   - Protobuf (3.5.0)
   - SwiftMultiSelect (0.2.4)
   - SwiftyJSON (4.0.0)
+  - TLPhotoPicker (1.5.7)
   - UICheckbox.Swift (1.0.0)
   - UIDropDown (1.1.1)
   - YNDropDownMenu (3.0.1)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - PopupController
   - SwiftMultiSelect
   - SwiftyJSON
+  - TLPhotoPicker
   - UICheckbox.Swift
   - UIDropDown
   - YNDropDownMenu
@@ -79,10 +81,11 @@ SPEC CHECKSUMS:
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SwiftMultiSelect: 50e4c628935492d30d3c45ab88901502c3eb52f4
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TLPhotoPicker: 3f654630fbc5296835f7f64abffd228d79c377f8
   UICheckbox.Swift: 85715689206fac5bae38b308f19c2a3e00442c3b
   UIDropDown: 22e6e3e22d419884c8f21d95ea9be36aac905ed4
   YNDropDownMenu: 967ebe0c633ce8f40e8667574525aa230ba24560
 
-PODFILE CHECKSUM: a10b26ab69ad24b8aaeb7f97e0675cdf64583940
+PODFILE CHECKSUM: a7337e6c9612cde1d73e5307ee55873af5eb733d
 
 COCOAPODS: 1.4.0

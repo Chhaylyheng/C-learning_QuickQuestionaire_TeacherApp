@@ -72,6 +72,8 @@
 		4771658F20B84F2100AD842C /* MaterialListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771658E20B84F2100AD842C /* MaterialListTableViewController.swift */; };
 		4771659420B87AAB00AD842C /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771659320B87AAB00AD842C /* Material.swift */; };
 		4771659820BC2F4300AD842C /* CardViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771659720BC2F4300AD842C /* CardViewHelper.swift */; };
+		479CB5B020BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CB5AF20BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift */; };
+		479CB5B420BFDF4300BA69B3 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CB5B320BFDF4300BA69B3 /* Media.swift */; };
 		47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */; };
 		47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */; };
 		47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */; };
@@ -159,6 +161,8 @@
 		4771659320B87AAB00AD842C /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		4771659720BC2F4300AD842C /* CardViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewHelper.swift; sourceTree = "<group>"; };
 		479AAC3520A5E79B0075EF8A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		479CB5AF20BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhotoPickerViewController.swift; sourceTree = "<group>"; };
+		479CB5B320BFDF4300BA69B3 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
 		47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 		4771658920B8479E00AD842C /* Bulletin Board */ = {
 			isa = PBXGroup;
 			children = (
+				479CB5AE20BE5A1B00BA69B3 /* Helper */,
 				4711C6DB20455CB200826C9E /* BulletinBoardViewController.swift */,
 				4754CB84204667970040BC79 /* BulletinCreationViewController.swift */,
 				470276E3205391B90030BD5E /* BBUpdateViewController.swift */,
@@ -427,6 +432,15 @@
 				4771659320B87AAB00AD842C /* Material.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		479CB5AE20BE5A1B00BA69B3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				479CB5AF20BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift */,
+				479CB5B320BFDF4300BA69B3 /* Media.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		47FE25E2202AB2FB00E02BCE /* View */ = {
@@ -619,6 +633,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMultiSelect/SwiftMultiSelect.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TLPhotoPicker/TLPhotoPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/UICheckbox.Swift/UICheckbox_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIDropDown/UIDropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/YNDropDownMenu/YNDropDownMenu.framework",
@@ -636,6 +651,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMultiSelect.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLPhotoPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICheckbox_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIDropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNDropDownMenu.framework",
@@ -667,6 +683,7 @@
 				C56674FB202F3643007B4D87 /* PNBar.swift in Sources */,
 				47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */,
 				1C06B41C2034144C005349FB /* PreviewTwoCMViewController.swift in Sources */,
+				479CB5B020BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift in Sources */,
 				47005ADC2036DA15001C1ACA /* UIComponentHelper.swift in Sources */,
 				47068B3D203B2EEF00099DE9 /* UserProfileCoreData.swift in Sources */,
 				473CC861202B1E80006C0312 /* QuestionsTableViewCell.swift in Sources */,
@@ -681,6 +698,7 @@
 				1C06B42A203414EE005349FB /* PreviewCMonlyViewController.swift in Sources */,
 				4771658F20B84F2100AD842C /* MaterialListTableViewController.swift in Sources */,
 				4700284E203AD157003CF4EB /* SWRevealViewController.m in Sources */,
+				479CB5B420BFDF4300BA69B3 /* Media.swift in Sources */,
 				471170002060F26900CC5264 /* QQTableViewCell.swift in Sources */,
 				1C2CA668202DA92E0064070A /* PNGenericChart.swift in Sources */,
 				1C06B426203414C3005349FB /* PreviewFiveViewController.swift in Sources */,

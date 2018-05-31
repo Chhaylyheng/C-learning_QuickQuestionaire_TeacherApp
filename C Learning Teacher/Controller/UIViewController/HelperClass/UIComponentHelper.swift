@@ -10,6 +10,19 @@ import Foundation
 import UIKit
 import UserNotifications
 extension UIViewController {
+    
+    func showAlert(fromController controller: UIViewController) {
+        let alert = UIAlertController(title: nil, message: "Uploading...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
     func PresentAlertController(title: String, message: String, actionTitle: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: actionTitle, style: .default, handler: nil)

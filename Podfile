@@ -16,6 +16,7 @@ target 'C Learning Teacher' do
   pod 'SwiftMultiSelect'
   pod 'ImageSlideshow', '~> 1.5'
   pod "ImageSlideshow/Kingfisher"
+  pod "TLPhotoPicker"
   # Pods for C Learning Teacher
 
 end

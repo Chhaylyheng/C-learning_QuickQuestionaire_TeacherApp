@@ -11,17 +11,27 @@ import Alamofire
 import SwiftyJSON
 import Photos
 import UICheckbox_Swift
+import TLPhotoPicker
 
-class ThreadCreateViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+class ThreadCreateViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TLPhotosPickerViewControllerDelegate {
+    var uploadedAlert = false
+    var cameraCapture = 0
     let alert = SweetAlert()
     var bbID : String = ""
     var threadName : String = ""
     var threadDescrip : String = ""
     let url = "https://kit.c-learning.jp/uploadfile"
-    var hval : String = ""
+    var fileID = [String]()
     var mail = 0
+    var selectedAssets = [TLPHAsset]()
     
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
     
     @IBOutlet weak var NotifyStuCheckBox: UICheckbox!
     @IBOutlet weak var uploadImage: UIImageView!
@@ -30,9 +40,6 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var threadDes: UITextView!
     @IBOutlet weak var threadTitle: UITextField!
     
-    @IBAction func notifyStudent(_ sender: Any){
-        print("HELLO")
-    }
     @IBAction func selectFiles(_ sender: Any) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -47,16 +54,18 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         
         let selectFromLibrary = UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-                
-                self.imagePicker.sourceType = .photoLibrary
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.navigationBar.tintColor = .black
-                self.imagePicker.navigationBar.titleTextAttributes = [
-                    NSAttributedStringKey.foregroundColor : UIColor.black
-                ]
-                self.present(self.imagePicker, animated: true, completion: nil)
+            let viewController = CustomPhotoPickerViewController()
+            viewController.delegate = self
+            viewController.didExceedMaximumNumberOfSelection = { picker in
+                print("Out of number of selection")
             }
+            var configure = TLPhotosPickerConfigure()
+            configure.numberOfColumn = 3
+            viewController.configure = configure
+            viewController.selectedAssets = self.selectedAssets
+            viewController.logDelegate = self as? TLPhotosPickerLogDelegate
+            
+            self.present(viewController, animated: true, completion: nil)
             
         })
         
@@ -92,6 +101,59 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         
     }
     
+    func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+        self.selectedAssets = withTLPHAssets
+        self.fileID.removeAll()
+        for i in 0..<selectedAssets.count {
+            let asset = self.selectedAssets[i]
+            if asset.type == .video {
+                // This is video
+            }
+            
+            if let image = asset.fullResolutionImage {
+                uploadImageRequest(image: image)
+                if i == 0 {
+                    self.imageView1.image = image
+                    self.view1.isHidden = false
+                } else if i == 1 {
+                    self.imageView2.image = image
+                    self.view2.isHidden = false
+                } else {
+                    self.imageView3.image = image
+                    self.view3.isHidden = false
+                }
+                uploadedAlert = true
+            }
+        }
+        
+    }
+    
+    @IBAction func deleteButton1(_ sender: Any) {
+        view1.isHidden = true
+        selectedAssets.removeFirst()
+        fileID.removeFirst()
+    }
+    @IBAction func deleteButton2(_ sender: Any) {
+        view2.isHidden = true
+        if selectedAssets.count == 1 {
+            selectedAssets.removeFirst()
+            fileID.removeFirst()
+        } else if selectedAssets.count == 2 {
+            selectedAssets.removeLast()
+            fileID.removeLast()
+        } else {
+            selectedAssets.remove(at: 2)
+            fileID.remove(at: 2)
+        }
+    }
+    @IBAction func deleteButton3(_ sender: Any) {
+        view3.isHidden = true
+        selectedAssets.removeLast()
+        fileID.removeLast()
+    }
+    func deselectedPhoto(picker: TLPhotosPickerViewController, at: Int) {
+        print("deselectedPhoto")
+    }
     
     @IBAction func DoneAction(_ sender: Any) {
         threadName = threadTitle.text!
@@ -120,10 +182,13 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         imagePicker.delegate = self
         
+        view1.isHidden = true
+        view2.isHidden = true
+        view3.isHidden = true
     }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -131,87 +196,112 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if uploadedAlert {
+           self.showAlert(fromController: self)
+        }
+    }
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        uploadImage.image = image
-        
-        let data = UIImageJPEGRepresentation(image, 1.0)
-        // get the image path url
-        //let imageURL = info[UIImagePickerControllerImageURL] as! NSURL
-        //let fileName = imageURL.absoluteString
-        
         dismiss(animated: true, completion: nil)
-        requestWith(endUrl: url, imageData: data, parameters: ["prefix": "_coop_"])
+        imageView1.image = image
+        view1.isHidden = false
+        cameraCapture = 1
+        uploadedAlert = true
+        uploadImageRequest(image: image)
     }
     
-    
-    
-    func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((JSON?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-        
-        let headers: HTTPHeaders = [
-            /* "Authorization": "your_access_token",  in case you need authorization header */
-            "Content-type": "multipart/form-data"
-        ]
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            for (key, value) in parameters {
-                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-            }
-            
-            if let data = imageData{
-                multipartFormData.append(data, withName: "file", fileName: "imageName.jpeg", mimeType: "image/jpeg")
-            }
-            
-        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
-            switch result{
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    print("Succesfully uploaded")
-                    print(response.result.value as Any)
-                    
-                    let repsoneResult = response.result.value as? NSDictionary
-                    self.hval = repsoneResult!["hval"] as! String
-                    print(self.hval)
-                    
-                    if let err = response.error{
-                        onError?(err)
-                        print(err)
-                        return
+    func uploadImageRequest(image: UIImage) {
+        let parameters = ["prefix": "_coop_"]
+        guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
+        guard let url = URL(string: "https://kit.c-learning.jp/uploadfile") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        let boundary = generateBoundary()
+
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let dataBody = createDataBody(withParameters: parameters, media: [mediaImage], boundary: boundary)
+        request.httpBody = dataBody
+
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: String]
+                    let hval = json["hval"]
+                    self.fileID.append(hval!)
+                    if self.fileID.count == self.selectedAssets.count {
+                        self.uploadedAlert = false
+                        self.dismiss(animated: false, completion: nil)
+                        
                     }
-                    onCompletion?(nil)
+                    if self.cameraCapture == 1 && self.fileID.count == 1 {
+                        self.uploadedAlert = false
+                        self.dismiss(animated: false, completion: nil)
+                        self.cameraCapture = 0
+                    }
+                    
+                } catch {
+                    print(error)
                 }
-            case .failure(let error):
-                print("Error in upload: \(error.localizedDescription)")
-                onError?(error)
             }
-        }
+        }.resume()
     }
     
-    
-    
-    func createThread() {
-        Alamofire.request("https://kit.c-learning.jp/s/ajax/coop/res", method: .post, parameters: ["stID":"s566481448","stName":"Professor Kimhak", "mode":"pcreate", "ccID": bbID, "c_title": threadName, "c_text": threadDescrip, "ttID": "id1" ]).responseJSON {
-            response in
-            if response.result.isSuccess {
-                _ = JSON(response.result.value!)
-                
-                self.alert.showAlert("Done", subTitle: "Thread was created", style: AlertStyle.none ,buttonTitle: "Okay") { Void in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-            } else {
-                print("Error \(String(describing: response.result.error))")
+    func generateBoundary() -> String {
+        return "Boundary-\(NSUUID().uuidString)"
+    }
+
+    func createDataBody(withParameters params: Parameters?, media: [Media]?, boundary: String) -> Data {
+        
+        let lineBreak = "\r\n"
+        var body = Data()
+        
+        if let parameters = params {
+            for (key, value) in parameters {
+                body.append("--\(boundary + lineBreak)")
+                body.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)")
+                body.append("\(value) \(lineBreak)")
             }
         }
+        
+        if let media = media {
+            for photo in media {
+                body.append("--\(boundary + lineBreak)")
+                body.append("Content-Disposition: form-data; name=\"\(photo.key)\"; filename=\"\(photo.filename)\"\(lineBreak)")
+                body.append("Content-Type: \(photo.mimeType + lineBreak + lineBreak)")
+                body.append(photo.data)
+                body.append(lineBreak)
+            }
+        }
+        
+        body.append("--\(boundary)--\(lineBreak)")
+        return body
     }
+    
     
     func creatingThread() {
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/make_a_thread", method: .post, parameters: ["ct":"c398223976", "sID":bbID, "c_no":"0", "mode":"pcreate", "ttID":"id1", "ttName":"Professor Kimhak", "fileID1": hval, "c_title": threadName, "c_text": threadDescrip, "mail-student": mail] ).responseJSON {
+        var fileID1 = ""
+        var fileID2 = ""
+        var fileID3 = ""
+        for i in 0..<fileID.count {
+            if i == 0{
+                fileID1 = fileID[0]
+            } else if i == 1 {
+                fileID2 = fileID[1]
+            } else {
+                fileID3 = fileID[2]
+            }
+        }
+        
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/make_a_thread", method: .post, parameters: ["ct":"c398223976", "sID":bbID, "mode":"pcreate", "ttID":"id1", "ttName":"Professor Kimhak", "fileID1": fileID1, "fileID2": fileID2, "fileID3": fileID3, "c_title": threadName, "c_text": threadDescrip, "mail-student": mail, "c_no":"0"] ).responseJSON {
             response in
             if response.result.isSuccess {
+                
                 _ = JSON(response.result.value!)
                 
                 self.alert.showAlert("Done", subTitle: "Thread was created", style: AlertStyle.none ,buttonTitle: "Okay") { Void in
@@ -224,4 +314,12 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         }
     }
     
+}
+
+extension Data {
+    mutating func append(_ string: String) {
+        if let data = string.data(using: .utf8) {
+            append(data)
+        }
+    }
 }

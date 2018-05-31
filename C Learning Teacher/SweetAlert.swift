@@ -210,6 +210,21 @@ open class SweetAlert: UIViewController {
         return self
     }
     
+    open func myshowAlert(fromController controller: UIViewController) {
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        controller.present(alert, animated: true, completion: nil)
+        return
+        
+    }
+    
     open func showAlert(_ title: String, subTitle: String?, style: AlertStyle) -> SweetAlert {
         _ = showAlert(title, subTitle: subTitle, style: style, buttonTitle: "OK")
         return self
