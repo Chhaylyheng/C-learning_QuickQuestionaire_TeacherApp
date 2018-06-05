@@ -49,6 +49,7 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool){
         //getThreadAPI()
+        
     }
     
     override func viewDidLoad() {
@@ -63,9 +64,9 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nibName1 = UINib(nibName: "ThreadTableCell", bundle: nil)
         tableView.register(nibName1, forCellReuseIdentifier: "ThreadCell")
         
-        self.getThreadAPI()
-        commentReplyListAPI()
         setUpNavBar()
+        getThreadAPI()
+        commentReplyListAPI()
         
     }
 
@@ -121,7 +122,7 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         cell.postDateLabel.text = (postDates[indexPath.row] as! String)
         cell.threadTitleLabel.text = (threadTitles[indexPath.row] as! String)
-        cell.comButton.setTitle("  \(comNum[indexPath.row])", for: .normal)
+        //cell.comButton.setTitle("  \(comNum[indexPath.row])", for: .normal)
         cell.comButton.tag = indexPath.row
         cell.comButton.addTarget(self, action: #selector(commentHandler), for: .touchUpInside)
         if fExt1s[indexPath.row] as? String == nil {
@@ -317,6 +318,11 @@ extension ThreadViewController {
             nextController.cn = cNOs[num] as! String
             nextController.threadTitle = threadTitles[num] as! String
             nextController.threadBody = threadTexts[num] as! String
+            
+            let thisthread = Thread(ctID:courseCode,cNO:cNOs[num] as! String,ccID: bbID,cTitle:threadTitles[num] as! String,fID1: fID1s[num] as? String,fID2: fID2s[num] as? String,fID3: fID3s[num] as? String,cText: threadTexts[num] as? String, fName1: fName1s[num] as? String,fName2: fName2s[num] as? String,fName3: fName3s[num] as? String,fExt1: fExt1s[num] as? String,fExt2: fExt2s[num] as? String,fExt3: fExt3s[num] as? String,fSize1: fSize1s[num] as? String,fSize2: fSize2s[num] as? String,fSize3: fSize3s[num] as? String)
+            //print(thisthread)
+            nextController.thread.append(thisthread)
+            
         }
     }
 }
@@ -376,6 +382,7 @@ extension ThreadViewController {
             case .success(_):
                 let result = response.result.value as? NSDictionary
                 let data = result!["data"] as! NSArray
+                print(data)
                 self.cRoots = data.value(forKey: "cRoot") as! NSArray
                 if self.cRoots.count > 0 {
                     self.threadCommentNum()
@@ -392,6 +399,7 @@ extension ThreadViewController {
     
     // MARK: Get number of comment and reply for each thread
     func threadCommentNum() {
+        comNum.removeAll()
         for i in 0..<cNOs.count {
             var num = 0
             for j in 0..<cRoots.count {
@@ -414,6 +422,7 @@ extension ThreadViewController {
                     print(response.result.value as Any)
                 }
                 self.getThreadAPI()
+                self.commentReplyListAPI()
                 break
                 
             case .failure(_):

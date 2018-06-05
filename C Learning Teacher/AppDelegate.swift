@@ -10,10 +10,9 @@ import UIKit
 import UserNotifications
 import CoreData
 
-
 let loginBefore = UserDefaults.standard.bool(forKey: "loginBefore")
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let manageObjectContext  = appDelegate.persistentContainer.viewContext
+let appDelegates = UIApplication.shared.delegate as! AppDelegate
+let manageObjectContext  = appDelegates.persistentContainer.viewContext
 var qbMode : Int = 0
 var qbID : String = ""
 var qbTitle : String = ""
@@ -27,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     class var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        UINavigationBar.appearance().isTranslucent = false
-//        UINavigationBar.appearance().barTintColor = UIColor.white
+        
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         // Override point for customization after application launch.
@@ -57,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     if error != nil {
                         
                     }
-                    
             })
             
         } else {
@@ -70,14 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             Screen.main()
             
         }
-        
     
         return true
     }
     
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if (DBChooser.default().handleOpen(url as URL?)) {
+            return true
+        }
+        return false
+    }
+    
+    
     //Get Notification Token
     
-   
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -142,8 +146,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
-    
-
-
 }
 

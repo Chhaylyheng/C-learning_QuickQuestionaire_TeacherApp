@@ -34,7 +34,6 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var imageView3: UIImageView!
     
     @IBOutlet weak var NotifyStuCheckBox: UICheckbox!
-    @IBOutlet weak var uploadImage: UIImageView!
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var threadDes: UITextView!
@@ -69,11 +68,29 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
             
         })
         
-        let selectFile = UIAlertAction(title: "File", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-//            let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
-//            importMenu.delegate = self
-//            importMenu.modalPresentationStyle = .formSheet
-//            self.present(importMenu, animated: true, completion: nil)
+        let selectFile = UIAlertAction(title: "Dropbox", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            DBChooser.default().open(for: DBChooserLinkTypePreview, from: self, completion: { results in
+                print(results)
+                if results != nil {
+                    print("true")
+                }
+                if (results?.count != 0) || results != nil {
+                    for case let result as DBChooserResult in results! {
+                        
+                        var currentText = self.threadDes.text
+                        if self.threadDes.text.isEmpty {
+                            currentText?.append("\(result.link.absoluteString)")
+                            self.threadDes.text = currentText
+                        } else {
+                            currentText?.append("\n\(result.link.absoluteString)")
+                            self.threadDes.text = currentText
+                        }
+                    }
+                } else {
+                    print("no results")
+                }
+            })
             
         })
         
@@ -87,7 +104,7 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         
         let img1 = UIImage(named: "photo-camera")
         let img2 = UIImage(named: "photo-of-a-landscape")
-        let img3 = UIImage(named: "attach-icon")
+        let img3 = UIImage(named: "dropbox-logo")
         takePhoto.setValue(img1, forKey: "image")
         selectFromLibrary.setValue(img2, forKey: "image")
         selectFile.setValue(img3, forKey: "image")
@@ -97,7 +114,6 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         alertController.addAction(selectFile)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
-        
         
     }
     

@@ -41,7 +41,7 @@ class CommentsTableViewCell: UITableViewCell {
         threadTextTextView.isHidden = true
         
         slideshow.backgroundColor = UIColor.white
-        //slideshow.slideshowInterval = 0
+        slideshow.slideshowInterval = 5
         slideshow.pageControlPosition = PageControlPosition.underScrollView
         slideshow.pageControl.currentPageIndicatorTintColor = UIColor.lightGray
         slideshow.pageControl.pageIndicatorTintColor = UIColor.black

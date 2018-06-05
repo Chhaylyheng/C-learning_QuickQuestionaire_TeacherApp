@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4A892F7CFC8E1F0ECEFBFF19FF917E5D"
+               BlueprintIdentifier = "9F7F312FDC7DFA1FE735C70BCC2DB34C"
                BuildableName = "Pods_C_Learning_Teacher.framework"
                BlueprintName = "Pods-C Learning Teacher"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4A892F7CFC8E1F0ECEFBFF19FF917E5D"
+            BlueprintIdentifier = "9F7F312FDC7DFA1FE735C70BCC2DB34C"
             BuildableName = "Pods_C_Learning_Teacher.framework"
             BlueprintName = "Pods-C Learning Teacher"
             ReferencedContainer = "container:Pods.xcodeproj">

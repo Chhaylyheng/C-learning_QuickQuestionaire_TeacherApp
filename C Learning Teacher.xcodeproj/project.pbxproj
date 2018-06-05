@@ -60,7 +60,7 @@
 		4717313820298F0B00EBA628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4717313620298F0B00EBA628 /* Main.storyboard */; };
 		4717313A20298F0B00EBA628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4717313920298F0B00EBA628 /* Assets.xcassets */; };
 		4717313D20298F0B00EBA628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4717313B20298F0B00EBA628 /* LaunchScreen.storyboard */; };
-		473CC858202AF534006C0312 /* DropDownViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC857202AF533006C0312 /* DropDownViews.swift */; };
+		4725283220C5A23C004FAF11 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725283120C5A23C004FAF11 /* CardView.swift */; };
 		473CC85C202AF58E006C0312 /* CustomAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */; };
 		473CC861202B1E80006C0312 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */; };
 		4742EB21204FEB19000FFE85 /* BBListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */; };
@@ -74,6 +74,8 @@
 		4771659820BC2F4300AD842C /* CardViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771659720BC2F4300AD842C /* CardViewHelper.swift */; };
 		479CB5B020BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CB5AF20BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift */; };
 		479CB5B420BFDF4300BA69B3 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CB5B320BFDF4300BA69B3 /* Media.swift */; };
+		47E0B1BA20C6B6E8005B555A /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E0B1B920C6B6E8005B555A /* DBChooser.framework */; };
+		47E0B1BC20C6B6F0005B555A /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47E0B1BB20C6B6F0005B555A /* DBChooser.bundle */; };
 		47F2A19020970C8A0074A5CB /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */; };
 		47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */; };
 		47F2A19420970CD60074A5CB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */; };
@@ -148,7 +150,7 @@
 		4717313920298F0B00EBA628 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4717313C20298F0B00EBA628 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4717313E20298F0B00EBA628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		473CC857202AF533006C0312 /* DropDownViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownViews.swift; sourceTree = "<group>"; };
+		4725283120C5A23C004FAF11 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertViewController.xib; sourceTree = "<group>"; };
 		473CC85F202B1E80006C0312 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		4742EB20204FEB19000FFE85 /* BBListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBListTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +165,8 @@
 		479AAC3520A5E79B0075EF8A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		479CB5AF20BE5A3D00BA69B3 /* CustomPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhotoPickerViewController.swift; sourceTree = "<group>"; };
 		479CB5B320BFDF4300BA69B3 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		47E0B1B920C6B6E8005B555A /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
+		47E0B1BB20C6B6F0005B555A /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		47F2A18E20970C8A0074A5CB /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		47F2A18F20970C8A0074A5CB /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
 		47F2A19220970CD60074A5CB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E0B1BA20C6B6E8005B555A /* DBChooser.framework in Frameworks */,
 				00D2FBA019CD5E3E985BE562 /* Pods_C_Learning_Teacher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +315,8 @@
 				1C2CA667202DA92E0064070A /* PNGenericChart.swift */,
 				1C06B42B20341BA3005349FB /* C Learning Teacher-Bridging-Header.h */,
 				47068B40203BD12500099DE9 /* coredata.xcdatamodeld */,
+				47E0B1BB20C6B6F0005B555A /* DBChooser.bundle */,
+				47E0B1B920C6B6E8005B555A /* DBChooser.framework */,
 			);
 			path = "C Learning Teacher";
 			sourceTree = "<group>";
@@ -321,7 +328,6 @@
 				4771658220B7F87C00AD842C /* Bulletin Board Cell */,
 				4771658320B7F96700AD842C /* Questionnaire Cell */,
 				473CC85B202AF58E006C0312 /* CustomAlertViewController.xib */,
-				473CC857202AF533006C0312 /* DropDownViews.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 		47FE25E2202AB2FB00E02BCE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4725283120C5A23C004FAF11 /* CardView.swift */,
 				1C06B42F203459EF005349FB /* SweetAlert.swift */,
 				473CC853202AF48F006C0312 /* Cell */,
 				470EEDEE2050FB78002B5DC1 /* PopView */,
@@ -577,6 +584,7 @@
 				4717313A20298F0B00EBA628 /* Assets.xcassets in Resources */,
 				47F2A19120970C8A0074A5CB /* ReplyTableViewCell.xib in Resources */,
 				4717313820298F0B00EBA628 /* Main.storyboard in Resources */,
+				47E0B1BC20C6B6F0005B555A /* DBChooser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,37 +633,29 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-C Learning Teacher/Pods-C Learning Teacher-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupController/PopupController.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMultiSelect/SwiftMultiSelect.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TLPhotoPicker/TLPhotoPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/UICheckbox.Swift/UICheckbox_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIDropDown/UIDropDown.framework",
-				"${BUILT_PRODUCTS_DIR}/YNDropDownMenu/YNDropDownMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMultiSelect.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLPhotoPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICheckbox_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIDropDown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNDropDownMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -709,7 +709,6 @@
 				1C2CA65C202DA21E0064070A /* PNValue.swift in Sources */,
 				1C06B42220341498005349FB /* PreviewFourViewController.swift in Sources */,
 				4742EB21204FEB19000FFE85 /* BBListTableViewCell.swift in Sources */,
-				473CC858202AF534006C0312 /* DropDownViews.swift in Sources */,
 				1C06B41E20341460005349FB /* PreviewThreeViewController.swift in Sources */,
 				1C06B4132032EFCD005349FB /* PreviewYesNoCmdViewController.swift in Sources */,
 				4704084420708E1A00066348 /* ThreadUpdateViewController.swift in Sources */,
@@ -734,6 +733,7 @@
 				470AE280206CB0C9004E5A1D /* NetworkProcessing.swift in Sources */,
 				1C06B424203414B2005349FB /* PreviewFourCMViewController.swift in Sources */,
 				1C06B4182034141D005349FB /* PreviewAgreeDisagreeCMViewController.swift in Sources */,
+				4725283220C5A23C004FAF11 /* CardView.swift in Sources */,
 				1CCF1847202EEAF2004A2683 /* BarChartViewController.swift in Sources */,
 				C5667503202F4312007B4D87 /* PNChartLabel.swift in Sources */,
 				1C06B416203413E5005349FB /* PreviewAgreeDisagreeViewController.swift in Sources */,
@@ -878,6 +878,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZ4A988YMV;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/C\\ Learning\\ Teacher",
+				);
 				INFOPLIST_FILE = "C Learning Teacher/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -898,6 +903,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZ4A988YMV;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/C\\ Learning\\ Teacher",
+				);
 				INFOPLIST_FILE = "C Learning Teacher/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

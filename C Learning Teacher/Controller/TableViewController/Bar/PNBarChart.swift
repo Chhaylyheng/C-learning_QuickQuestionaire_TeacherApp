@@ -110,16 +110,16 @@ class PNBarChart: UIView {
         for value in self.yValues {
             let grade = value / self.yValueMax
             var barXPosition: CGFloat!
-            if self.barWidth != nil && self.barWidth > 0 {
-                barXPosition = CGFloat(index) * self.xLabelWidth + self.yChartLabelWidth + self.chartMargin + (self.xLabelWidth / 2) - (self.barWidth / 2)
-            } else {
-                barXPosition = CGFloat(index) * self.xLabelWidth + self.yChartLabelWidth + self.chartMargin + self.xLabelWidth * 0.25
-                if self.showLabel {
-                    self.barWidth = self.xLabelWidth * 0.5
-                } else {
-                    self.barWidth = self.xLabelWidth * 0.6
-                }
-            }
+//            if self.barWidth != nil && self.barWidth > 0 {
+//                barXPosition = CGFloat(index) * self.xLabelWidth + self.yChartLabelWidth + self.chartMargin + (self.xLabelWidth / 2) - (self.barWidth / 2)
+//            } else {
+//                barXPosition = CGFloat(index) * self.xLabelWidth + self.yChartLabelWidth + self.chartMargin + self.xLabelWidth * 0.25
+//                if self.showLabel {
+//                    self.barWidth = self.xLabelWidth * 0.5
+//                } else {
+//                    self.barWidth = self.xLabelWidth * 0.6
+//                }
+//            }
             
             let bar = PNBar(frame: CGRect(x: barXPosition, y: self.frame.size.height - chartCarvanHeight - self.xLabelHeight - self.chartMargin, width: self.barWidth, height: chartCarvanHeight))
             bar.barRadius = self.barRadius
