@@ -117,7 +117,8 @@ class ThreadViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if !(threadTexts[indexPath.row] as! String).isEmpty {
             cell.threadTextTextView.isHidden = false
-            cell.threadTextTextView.text = (threadTexts[indexPath.row] as! String)
+            cell.threadTextTextView.text = threadTexts[indexPath.row] as! String
+            cell.threadTextTextView.isScrollEnabled = true
             cell.threadTextHeight.constant = cell.threadTextTextView.contentSize.height
         }
         cell.postDateLabel.text = (postDates[indexPath.row] as! String)

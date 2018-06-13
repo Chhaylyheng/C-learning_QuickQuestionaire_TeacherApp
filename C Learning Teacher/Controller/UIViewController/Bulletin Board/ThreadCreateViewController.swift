@@ -13,18 +13,25 @@ import Photos
 import UICheckbox_Swift
 import TLPhotoPicker
 
+// Start again
+
 
 class ThreadCreateViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TLPhotosPickerViewControllerDelegate {
+    
     var uploadedAlert = false
-    var cameraCapture = 0
     let alert = SweetAlert()
     var bbID : String = ""
     var threadName : String = ""
     var threadDescrip : String = ""
     let url = "https://kit.c-learning.jp/uploadfile"
-    var fileID = [String]()
+    var fileIDs = [String]()
+    var fileExts = [String]()
+    var imageIDS = [String]()
+    var imageExts = [String]()
+    var captureImages = [UIImage]()
     var mail = 0
     var selectedAssets = [TLPHAsset]()
+    var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
@@ -32,10 +39,7 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView3: UIImageView!
-    
     @IBOutlet weak var NotifyStuCheckBox: UICheckbox!
-    var imagePicker = UIImagePickerController()
-    
     @IBOutlet weak var threadDes: UITextView!
     @IBOutlet weak var threadTitle: UITextField!
     
@@ -43,22 +47,33 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let takePhoto = UIAlertAction(title: "Take Photo", style: .default, handler: { (alert: UIAlertAction!) -> Void in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.imagePicker.sourceType = .camera
-                self.imagePicker.allowsEditing = false
-                self.present(self.imagePicker, animated: true, completion: nil)
+            if self.fileIDs.count != 3 {
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    self.imagePicker.sourceType = .camera
+                    self.imagePicker.allowsEditing = false
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+            } else {
+                self.PresentAlert(message: "You already selected 3 images", actionTitle: "okay")
             }
-            
         })
         
         let selectFromLibrary = UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            
+            var configure = TLPhotosPickerConfigure()
+            if self.captureImages.count == 0 {
+                configure.maxSelectedAssets = 3
+            } else if self.captureImages.count == 1 {
+                configure.maxSelectedAssets = 2
+            } else {
+                configure.maxSelectedAssets = 1
+            }
             
             let viewController = CustomPhotoPickerViewController()
             viewController.delegate = self
             viewController.didExceedMaximumNumberOfSelection = { picker in
                 print("Out of number of selection")
             }
-            var configure = TLPhotosPickerConfigure()
             configure.numberOfColumn = 3
             viewController.configure = configure
             viewController.selectedAssets = self.selectedAssets
@@ -71,11 +86,8 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         let selectFile = UIAlertAction(title: "Dropbox", style: .default, handler: { (alert: UIAlertAction!) -> Void in
             
             DBChooser.default().open(for: DBChooserLinkTypePreview, from: self, completion: { results in
-                print(results)
-                if results != nil {
-                    print("true")
-                }
-                if (results?.count != 0) || results != nil {
+
+                if (results?.count != 0) && results != nil {
                     for case let result as DBChooserResult in results! {
                         
                         var currentText = self.threadDes.text
@@ -117,56 +129,75 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         
     }
     
-    func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
-        self.selectedAssets = withTLPHAssets
-        self.fileID.removeAll()
-        for i in 0..<selectedAssets.count {
-            let asset = self.selectedAssets[i]
-            if asset.type == .video {
-                // This is video
-            }
-            
-            if let image = asset.fullResolutionImage {
-                uploadImageRequest(image: image)
-                if i == 0 {
-                    self.imageView1.image = image
-                    self.view1.isHidden = false
-                } else if i == 1 {
-                    self.imageView2.image = image
-                    self.view2.isHidden = false
-                } else {
-                    self.imageView3.image = image
-                    self.view3.isHidden = false
-                }
-                uploadedAlert = true
-            }
+    
+    // Remove the first element from the arrays
+    func removeFirstElement() {
+        if fileExts[0] == "xx" {
+            captureImages.removeFirst()
+            fileExts.removeFirst()
+            fileIDs.removeFirst()
+        } else {
+            selectedAssets.removeFirst()
+            fileExts.removeFirst()
+            fileIDs.removeFirst()
+            imageIDS.removeFirst()
+            imageExts.removeFirst()
         }
-        
     }
+    
     
     @IBAction func deleteButton1(_ sender: Any) {
         view1.isHidden = true
-        selectedAssets.removeFirst()
-        fileID.removeFirst()
+        removeFirstElement()
     }
+    
     @IBAction func deleteButton2(_ sender: Any) {
         view2.isHidden = true
-        if selectedAssets.count == 1 {
-            selectedAssets.removeFirst()
-            fileID.removeFirst()
-        } else if selectedAssets.count == 2 {
-            selectedAssets.removeLast()
-            fileID.removeLast()
+        if fileIDs.count == 1 {
+            removeFirstElement()
         } else {
-            selectedAssets.remove(at: 2)
-            fileID.remove(at: 2)
+            if fileExts[1] == "xx" {
+                if captureImages.count == 1 {
+                    captureImages.removeFirst()
+                    fileExts.remove(at: 1)
+                    fileIDs.remove(at: 1)
+                } else {
+                    captureImages.remove(at: 1)
+                    fileExts.remove(at: 1)
+                    fileIDs.remove(at: 1)
+                }
+            } else {
+                if selectedAssets.count == 1 {
+                    selectedAssets.removeFirst()
+                    imageIDS.removeFirst()
+                    imageExts.removeFirst()
+                    fileExts.remove(at: 1)
+                    fileIDs.remove(at: 1)
+                } else {
+                    selectedAssets.remove(at: 1)
+                    imageIDS.remove(at: 1)
+                    imageExts.remove(at: 1)
+                    fileExts.remove(at: 1)
+                    fileIDs.remove(at: 1)
+                }
+            }
         }
     }
     @IBAction func deleteButton3(_ sender: Any) {
         view3.isHidden = true
-        selectedAssets.removeLast()
-        fileID.removeLast()
+        if fileExts.last == "xx" {
+            captureImages.removeLast()
+            fileExts.removeLast()
+            fileIDs.removeLast()
+        } else {
+            selectedAssets.removeLast()
+            imageIDS.removeLast()
+            imageExts.removeLast()
+            fileExts.removeLast()
+            fileIDs.removeLast()
+        }
     }
+    
     func deselectedPhoto(picker: TLPhotosPickerViewController, at: Int) {
         print("deselectedPhoto")
     }
@@ -176,8 +207,6 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         threadDescrip = threadDes.text
         if NotifyStuCheckBox.isSelected == true {
             mail = 1
-        } else {
-            mail = 0
         }
         
         if (threadTitle.text?.isEmpty)! {
@@ -200,36 +229,211 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         super.viewDidLoad()
         imagePicker.delegate = self
         
-        view1.isHidden = true
-        view2.isHidden = true
-        view3.isHidden = true
+        hidenView()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if uploadedAlert {
+            self.showAlert(fromController: self)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if uploadedAlert {
-           self.showAlert(fromController: self)
-        }
+    func hidenView() {
+        view1.isHidden = true
+        view2.isHidden = true
+        view3.isHidden = true
     }
     
+    
+    // When finish taking the photo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        hidenView()
+        
+        // Display Previous Image
+        for i in 0..<fileIDs.count {
+            if i == 0 {
+                view1.isHidden = false
+                if fileExts[0] == "xx" {
+                    imageView1.image = captureImages[0]
+                } else {
+                    let asset = self.selectedAssets[0]
+                    if let img = asset.fullResolutionImage {
+                        imageView1.image = img
+                    }
+                }
+            } else if i == 1 {
+                view2.isHidden = false
+                if fileExts[1] == "xx" {
+                    if captureImages.count == 1 {
+                        imageView2.image = captureImages[0]
+                    } else {
+                        imageView2.image = captureImages[1]
+                    }
+                } else {
+                    if selectedAssets.count == 1 {
+                        let asset = self.selectedAssets[0]
+                        if let img = asset.fullResolutionImage {
+                            imageView2.image = img
+                        }
+                    } else {
+                        let asset = self.selectedAssets[1]
+                        if let img = asset.fullResolutionImage {
+                            imageView2.image = img
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        // Display and append new image
+        
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         dismiss(animated: true, completion: nil)
-        imageView1.image = image
-        view1.isHidden = false
-        cameraCapture = 1
+        if fileIDs.count == 0 {
+            view1.isHidden = false
+            imageView1.image = image
+            fileExts.append("xx")
+        } else if fileIDs.count == 1 {
+            view2.isHidden = false
+            imageView2.image = image
+            fileExts.append("xx")
+        } else {
+            view3.isHidden = false
+            imageView3.image = image
+            fileExts.append("xx")
+        }
+        
         uploadedAlert = true
+        captureImages.append(image)
         uploadImageRequest(image: image)
     }
     
+    
+    
+    // After choosing images from the Photo
+    
+    func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+        let temporayAssets = selectedAssets
+        self.selectedAssets = withTLPHAssets
+        let tempImageID = imageIDS
+        let tempImageEX = imageExts
+        imageIDS.removeAll()
+        imageExts.removeAll()
+        
+        for (j,k) in zip(fileIDs, fileExts) {
+            if k == "xy" {
+                let index = fileIDs.index(of: j)
+                fileIDs.remove(at: index!)
+                fileExts.remove(at: index!)
+            }
+        }
+        
+        for i in 0..<selectedAssets.count {
+            let asset = self.selectedAssets[i]
+            if asset.type == .video {
+                // This is video
+            }
+            print(asset)
+            print(asset.fullResolutionImage)
+            
+            if let image = asset.fullResolutionImage {
+                if temporayAssets.contains(selectedAssets[i]) {
+                    let indexofA = temporayAssets.index(of: selectedAssets[i])
+                    fileIDs.append(tempImageID[indexofA!])
+                    fileExts.append(tempImageEX[indexofA!])
+                    imageIDS.append(tempImageID[indexofA!])
+                    imageExts.append(tempImageEX[indexofA!])
+                } else {
+                    self.imageExts.append("xy")
+                    self.fileExts.append("xy")
+                    uploadImageRequest(image: image)
+                    if uploadedAlert == false && imageExts.count == selectedAssets.count {
+                        uploadedAlert = true
+                    }
+                }
+            }
+        }
+        
+        
+        hidenView()
+        
+        // Display all the images
+        
+        for i in 0..<fileExts.count {
+            if i == 0 {
+                view1.isHidden = false
+                if fileExts[0] == "xx" {
+                    imageView1.image = captureImages[0]
+                } else {
+                    let asset = self.selectedAssets[0]
+                    if let img = asset.fullResolutionImage {
+                        imageView1.image = img
+                    }
+                }
+            } else if i == 1 {
+                view2.isHidden = false
+                if fileExts[1] == "xx" {
+                    if captureImages.count == 1 {
+                        imageView2.image = captureImages[0]
+                    } else {
+                        imageView2.image = captureImages[1]
+                    }
+                } else {
+                    if selectedAssets.count == 1 {
+                        let asset = self.selectedAssets[0]
+                        if let img = asset.fullResolutionImage {
+                            imageView2.image = img
+                        }
+                    } else {
+                        let asset = self.selectedAssets[1]
+                        if let img = asset.fullResolutionImage {
+                            imageView2.image = img
+                        }
+                    }
+                }
+            } else {
+                view3.isHidden = false
+                if fileExts[2] == "xx" {
+                    if captureImages.count == 1 {
+                        imageView3.image = captureImages[0]
+                    } else if captureImages.count == 2 {
+                        imageView3.image = captureImages[1]
+                    } else {
+                        imageView3.image = captureImages[2]
+                    }
+                } else {
+                    if selectedAssets.count == 1 {
+                        let asset = self.selectedAssets[0]
+                        if let img = asset.fullResolutionImage {
+                            imageView3.image = img
+                        }
+                    } else if selectedAssets.count == 2 {
+                        let asset = self.selectedAssets[1]
+                        if let img = asset.fullResolutionImage {
+                            imageView3.image = img
+                        }
+                    } else {
+                        let asset = self.selectedAssets[2]
+                        if let img = asset.fullResolutionImage {
+                            imageView3.image = img
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    
+    // For uploading images
     func uploadImageRequest(image: UIImage) {
         let parameters = ["prefix": "_coop_"]
         guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
@@ -249,16 +453,14 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: String]
                     let hval = json["hval"]
-                    self.fileID.append(hval!)
-                    if self.fileID.count == self.selectedAssets.count {
-                        self.uploadedAlert = false
-                        self.dismiss(animated: false, completion: nil)
-                        
+                    self.fileIDs.append(hval!)
+                    if self.fileExts.last == "xy" {
+                        self.imageIDS.append(hval!)
                     }
-                    if self.cameraCapture == 1 && self.fileID.count == 1 {
+                    
+                    if self.fileIDs.count == self.fileExts.count {
                         self.uploadedAlert = false
                         self.dismiss(animated: false, completion: nil)
-                        self.cameraCapture = 0
                     }
                     
                 } catch {
@@ -304,17 +506,32 @@ class ThreadCreateViewController: UIViewController, UINavigationControllerDelega
         var fileID1 = ""
         var fileID2 = ""
         var fileID3 = ""
-        for i in 0..<fileID.count {
+        for i in 0..<fileIDs.count {
             if i == 0{
-                fileID1 = fileID[0]
+                fileID1 = fileIDs[0]
             } else if i == 1 {
-                fileID2 = fileID[1]
+                fileID2 = fileIDs[1]
             } else {
-                fileID3 = fileID[2]
+                fileID3 = fileIDs[2]
             }
         }
+        let parameters = [
+            "ct":"c398223976",
+            "sID":bbID,
+            "mode":"pcreate",
+            "ttID":"id1",
+            "ttName":"Professor Kimhak",
+            "fileID1": fileID1,
+            "fileID2": fileID2,
+            "fileID3": fileID3,
+            "c_title": threadName,
+            "c_text": threadDescrip,
+            "mail-student": mail,
+            "c_no":"0"
+            ] as [String : Any]
+        print(parameters)
         
-        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/make_a_thread", method: .post, parameters: ["ct":"c398223976", "sID":bbID, "mode":"pcreate", "ttID":"id1", "ttName":"Professor Kimhak", "fileID1": fileID1, "fileID2": fileID2, "fileID3": fileID3, "c_title": threadName, "c_text": threadDescrip, "mail-student": mail, "c_no":"0"] ).responseJSON {
+        Alamofire.request("https://kit.c-learning.jp/t/ajax/coop/make_a_thread", method: .post, parameters: parameters ).responseJSON {
             response in
             if response.result.isSuccess {
                 

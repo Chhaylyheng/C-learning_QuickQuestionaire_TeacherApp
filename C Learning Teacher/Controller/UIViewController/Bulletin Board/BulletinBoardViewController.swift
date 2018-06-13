@@ -71,7 +71,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 122
+        return 125
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,9 +94,8 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
             cell.ccTotalSize.text = (ccSizes[indexPath.row] as! String) + " KB"
         }
         
-        cell.ccName.setTitle(ccNames[indexPath.row] as? String, for: .normal)
-        cell.ccName.tag = indexPath.row
-        cell.ccName.addTarget(self, action: #selector(buttonHandler), for: .touchUpInside)
+        //cell.ccName.setTitle(ccNames[indexPath.row] as? String, for: .normal)
+        cell.ccName.text = ccNames[indexPath.row] as? String
         
         if ccStudentWrites[indexPath.row] as? String == "1" {
             cell.ccStudentWrite.image = UIImage(named: "circle")
@@ -131,6 +130,7 @@ class BulletinBoardViewController: UIViewController, UITableViewDelegate, UITabl
         let Dtail = storyboard?.instantiateViewController(withIdentifier: "threadList") as! ThreadViewController
         Dtail.bbID = ccID[indexPath.row] as! String
         Dtail.courseCode = ctID
+        Dtail.anonymous = ccAnonymouss[indexPath.row] as! String
         navigationController?.pushViewController(Dtail, animated: true)
         
         

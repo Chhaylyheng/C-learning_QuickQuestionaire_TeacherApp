@@ -132,12 +132,12 @@ extension LoginViewController {
         
         let validationValue : String = ""
         let deviceId  =  UIDevice.current.identifierForVendor!.uuidString
+        
         Alamofire.request("https://kit.c-learning.jp/t/app/login.json", method: .post, parameters: ["login":email ,"pass":password,"os":"iOS","token" : "","did":deviceId], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
             case .success(_):
                 
-                print(response.result.value as? NSDictionary as Any)
                 let repsoneResult = response.result.value as? NSDictionary
                 
                 if repsoneResult!["err"] as! Int == -2 {
@@ -151,7 +151,6 @@ extension LoginViewController {
                     let ttImage = teacher["ttImage"] as! String
                     let ttLastLoginDate = teacher["ttLastLoginDate"] as! String
                     let imageUrl : URL = URL(string: "https://kit.c-learning.jp/upload/profile/t/"+ttImage)!
-                    //print(imageUrl,"+++")
                     
                     self.getDataFromUrl(url: imageUrl){
                         (data, response, error)  in
@@ -161,7 +160,6 @@ extension LoginViewController {
                         }
                         self.image = (data as NSData?)!
                         
-                        //print(ttLastLoginDate,"+++")
                         if let ttName = teacher["ttName"] {
                             Userprofiles.insertUserProfile(_email: email,_username: ttName as! String,_hashkey : haskey, _profileImage: self.image!, _lastlogin: ttLastLoginDate) { (result) -> () in
                                 // do stuff with the result

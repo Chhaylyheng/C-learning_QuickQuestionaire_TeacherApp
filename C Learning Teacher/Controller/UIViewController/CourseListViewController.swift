@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CourseListViewController: UIViewController {
+class CourseListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         UIComponentHelper.PresentActivityIndicator(view: self.view, option: false)
@@ -19,7 +19,15 @@ class CourseListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setUpNavBar()
+        tableView.delegate = self
+        tableView.dataSource = self
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
     }
     
 
@@ -63,5 +71,22 @@ class CourseListViewController: UIViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "courseCell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let Dashboard = storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardViewController
+        navigationController?.pushViewController(Dashboard , animated: true)
+    }
 
 }

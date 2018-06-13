@@ -12,7 +12,7 @@ import Foundation
     @IBInspectable var cornerRadius : CGFloat = 5
     @IBInspectable var shadowColor : UIColor = .black
     @IBInspectable var shadowOffSetWidth : Int = 0
-    @IBInspectable var shadowOffSetHeight : Int = 5
+    @IBInspectable var shadowOffSetHeight : Int = 0
     @IBInspectable var shadowOpacity : Float = 0.2
     
     override func layoutSubviews() {
